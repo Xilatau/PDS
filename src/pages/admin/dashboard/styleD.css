@@ -1,0 +1,17 @@
+.dashboard-content {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;       /* opcional para centrar verticalmente */
+  padding: 20px;
+  box-sizing: border-box;
+
+  /* transição e margem quando a navbar está aberta */
+  transition: margin-left 0.3s ease;
+  margin-left: 67px;
+}
+
+.dashboard-content h1 {
+  font-size: 24px;
+  text-align: center;
+}

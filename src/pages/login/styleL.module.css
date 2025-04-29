@@ -1,0 +1,71 @@
+.pagelogin {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante que a página ocupe toda a altura da janela */
+  color: white;
+}
+
+.header{
+    text-align: center;
+    padding: 0;
+}
+
+.login{
+  container: center;
+  margin: 5% auto 0;
+  width: 40%;
+  border: 2px solid black;
+  box-shadow: 8px 10px 10px rgba(193, 215, 212, 0.2);
+  border-radius: 10px;
+  background-color: rgb(193, 215, 212);
+  color: #000;
+  padding: 0 3%;
+}
+  
+.form{
+  padding: 0;
+  line-height: 2;
+}
+
+form input{
+  width: 100%;
+  padding: 10px;
+  margin: 3px auto 20px ;
+  border: none;
+  border-radius: 8px;
+  background-color: #f1f1f1;
+  font-size: 16px;
+}
+
+form p{
+  text-align: center;
+}
+
+.error{
+  color: red;
+  font-size: 14px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.button{
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 8px ;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 1% auto 0;
+  cursor: pointer;
+  width: 30%;
+  position: relative;
+  left: 68%;
+}
+
+.footer {
+  margin-top: auto; /* Empurra o rodapé para o final da página */
+  text-align: center;
+  width: 100%;
+  padding: 1% 0;
+}
