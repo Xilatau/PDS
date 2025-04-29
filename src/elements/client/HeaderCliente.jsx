@@ -19,7 +19,7 @@ function HeaderClient(){
                     <li className="links">
                         <ul>
                             <li><Link to="/dashboardClient">Dashboard</Link></li>
-                            <li><Link to="/Incidencias-Melhoria">Incidências/Melhorias</Link></li>
+                            <li><Link to="/pedidos">Incidencias/Melhorias</Link></li>
                             <li><Link to="/perfil">Perfil</Link></li>
                             <li><Link to="/Contactos">Contactos</Link></li>
                         </ul>

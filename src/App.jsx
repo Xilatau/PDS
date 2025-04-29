@@ -12,6 +12,7 @@ import NavbarV from "./elements/admin/NavBarV"
 import HeaderClient from "./elements/client/HeaderCliente";
 import DashboardClient from "./pages/client/dashboard/DashboardClient";
 import Perfil from "./pages/perfil/perfil";
+import Pedidos from "./pages/pedidos/pedidos";
 
 function App() {
   return (
@@ -46,9 +47,8 @@ function App() {
           element={
             <PrivateRoute>
               <>
-                <HeaderAdmin/>
-                <DashboardAdmin/>
-                <NavbarV/>
+                <HeaderClient/>
+                <DashboardClient/>
                 <Footer/>
               </>
             </PrivateRoute>
@@ -61,14 +61,28 @@ function App() {
           element={
             <PrivateRoute>
               <>
-                <HeaderAdmin/>
+                <HeaderClient/>
                 <Perfil/>
-                <NavbarV/>
                 <Footer/>
               </>
             </PrivateRoute>
           }
         />
+
+        {/*Pedidos*/}
+        <Route
+          path="/pedidos"
+          element={
+            <PrivateRoute>
+              <>
+                <HeaderClient/>
+                <Pedidos/>
+                <Footer/>
+              </>
+            </PrivateRoute>
+          }
+        />
+          
 
       </Routes>
     </AuthProvider>
