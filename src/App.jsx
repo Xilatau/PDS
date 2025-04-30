@@ -1,19 +1,24 @@
-import {Routes, Route} from "react-router-dom";
-import PrivateRoute from "./PrivateRoutes";
+import {Routes, Route} from "react-router-dom"
+import PrivateRoute from "./PrivateRoutes"
+import {AuthProvider} from "./Authentication"
 
-import {AuthProvider} from "./Authentication";
-import Login from "./pages/login/Login";
+//Paginas Gerais
+import Login from "./pages/login/Login"
 import Footer from "./elements/Footer"
 
-import DashboardAdmin from "./pages/admin/dashboard/DashboardAdmin";
+//Paginas Admin
+import DashboardAdmin from "./pages/admin/dashboard/DashboardAdmin"
 import HeaderAdmin from "./elements/admin/HeaderAdmin"
 import NavbarV from "./elements/admin/NavBarV"
+import AddContactos from "./pages/admin/addContacts/AddContacts"
 
-import HeaderClient from "./elements/client/HeaderCliente";
-import DashboardClient from "./pages/client/dashboard/DashboardClient";
-import Perfil from "./pages/perfil/perfil";
-import Pedidos from "./pages/pedidos/pedidos";
-import Contactos from "./pages/admin/AddContactos/Contactos";
+
+//Paginas Cliente
+import HeaderClient from "./elements/client/HeaderCliente"
+import DashboardClient from "./pages/client/dashboard/DashboardClient"
+import Perfil from "./pages/perfil/perfil"
+import Pedidos from "./pages/improvement/pedidos"
+
 
 function App() {
   return (
@@ -24,9 +29,7 @@ function App() {
         <Route path="/login" element={<Login/>} />
 
         {/* Rotas privadas */}
-        
 
-        
         {/*Admin*/}
         <Route
           path="/dashboard"
@@ -69,9 +72,9 @@ function App() {
           }
         />
 
-        {/*Pedidos*/}
+          {/*improvement & incidences*/}
         <Route
-          path="/pedidos"
+          path="/improvement-incidences"
           element={
             <PrivateRoute>
               <>
@@ -81,6 +84,8 @@ function App() {
             </PrivateRoute>
           }
         />
+
+        {/* Fim Cliente*/}
 
         {/*Contactos*/}
         <Route
