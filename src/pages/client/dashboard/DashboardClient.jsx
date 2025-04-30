@@ -1,4 +1,5 @@
-import "./styleD.css";
+import "./StyleD.css";
+import "../../../Style.css"
 
 function Dashboard() {
   return (

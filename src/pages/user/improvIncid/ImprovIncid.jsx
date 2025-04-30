@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './stylePedidos.css';
+import './style.css';
 
 function Pedidos() {
   const [tipo, setTipo] = useState("");

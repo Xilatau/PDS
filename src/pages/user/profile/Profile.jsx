@@ -18,7 +18,7 @@ function Perfil() {
   return (
     <div className="perfil-container">
 
-      <h1>Perfil</h1>
+      <h1 className='h1-profile'>Perfil</h1>
       <form onSubmit={handleSubmit} className="perfil-form">
 
         {/* nome */}

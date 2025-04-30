@@ -3,22 +3,22 @@ import PrivateRoute from "./PrivateRoutes"
 import {AuthProvider} from "./Authentication"
 
 //Paginas Gerais
-import Login from "./pages/login/Login"
+import Login from "./pages/user/login/Login"
 import Footer from "./elements/Footer"
+import ImprovIncid from "./pages/user/improvIncid/ImprovIncid"
+import Contacts from "./pages/user/contact/Contact"
 
 //Paginas Admin
 import DashboardAdmin from "./pages/admin/dashboard/DashboardAdmin"
 import HeaderAdmin from "./elements/admin/HeaderAdmin"
 import NavbarV from "./elements/admin/NavBarV"
-import AddContactos from "./pages/admin/addContacts/AddContacts"
+import AddContacts from "./pages/admin/addContacts/AddContacts"
 
 
 //Paginas Cliente
 import HeaderClient from "./elements/client/HeaderCliente"
 import DashboardClient from "./pages/client/dashboard/DashboardClient"
-import Perfil from "./pages/perfil/perfil"
-import Pedidos from "./pages/improvement/pedidos"
-
+import Perfil from "./pages/user/profile/Profile"
 
 function App() {
   return (
@@ -31,8 +31,9 @@ function App() {
         {/* Rotas privadas */}
 
         {/*Admin*/}
+        {/*Dashboard*/}
         <Route
-          path="/dashboard"
+          path="/dashboardAdmin"
           element={
             <PrivateRoute>
               <>
@@ -44,10 +45,71 @@ function App() {
             </PrivateRoute>
           }  
         />
+        
+        {/*Contacts*/}
+        <Route
+          path="/ContactsAdmin"
+          element={
+            <PrivateRoute>
+              <>
+                <HeaderAdmin/>
+                {/*Adicionar contactos*/}
+                <NavbarV/>
+                <Footer/>
+              </>
+            </PrivateRoute>
+          } 
+        />
+
+        {/*AddContacts*/}
+        <Route
+          path="/AddContacts"
+          element={
+            <PrivateRoute>
+              <>
+                <HeaderAdmin/>
+                <AddContacts/>
+                <NavbarV/>
+                <Footer/>
+              </>
+            </PrivateRoute>
+          }
+        />
+
+        {/*Improvemnt & Incidences*/}
+        <Route
+          path="/improvement-incidencesAdmin"
+          element={
+            <PrivateRoute>
+              <>
+                <HeaderAdmin/>
+                {/*Adicionar improvement-incidences*/}
+                <NavbarV/>
+                <Footer/>
+              </>
+            </PrivateRoute>
+          }
+        />
+
+        {/*Profile*/}
+        <Route
+          path="/profileAdmin"
+          element={
+            <PrivateRoute>
+              <>
+                <HeaderAdmin/>
+                {/*Adicionar Profile*/}
+                <NavbarV/>
+                <Footer/>
+              </>
+            </PrivateRoute>
+          }
+        />
+        {/*Fim Admin*/}
 
         {/*Cliente*/}
         <Route
-          path="/dashboardClient"
+          path="/dashboard"
           element={
             <PrivateRoute>
               <>
@@ -61,7 +123,7 @@ function App() {
 
         {/*Perfil*/}
         <Route
-          path="/perfil"
+          path="/profile"
           element={
             <PrivateRoute>
               <>
@@ -79,26 +141,25 @@ function App() {
             <PrivateRoute>
               <>
                 <HeaderClient/>
-                <Pedidos/>
+                <ImprovIncid/>
               </>
             </PrivateRoute>
           }
         />
 
-        {/* Fim Cliente*/}
-
-        {/*Contactos*/}
+        {/*Contacts*/}
         <Route
-          path="/contactos"
+          path="/contacts"
           element={
             <PrivateRoute>
               <>
                 <HeaderClient/>
-                <Contactos/>
+                <Contacts/>
               </>
             </PrivateRoute>
           }
         />
+        {/* Fim Cliente*/}
 
       </Routes>
     </AuthProvider>

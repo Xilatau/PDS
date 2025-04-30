@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuth } from '../../Authentication';
-import { useNavigate } from 'react-router-dom'; 
-import '../../Style.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function VerticalNavbar() {
 
@@ -31,10 +30,11 @@ export default function VerticalNavbar() {
             <h2>CondoConnect</h2>
             <nav>
               <ul>
-                <li><Link to="/dashboard">Dashboard</Link></li>
-                <li><Link to="/Pedidos">Pedidos</Link></li>
-                <li><Link to="/Contactos">Contactos</Link></li>
-                <li><Link to="/perfil">Perfil</Link></li>
+                <li><Link to="/dashboardAdmin">Dashboard</Link></li>
+                <li><Link to="/improvement-incidencesAdmin">Improvement/Incidences</Link></li>
+                <li><Link to="/ContactsAdmin">Contactos</Link></li>
+                <li><Link to="/AddContacts">Adicionar Contactos</Link></li>
+                <li><Link to="/profileAdmin">Perfil</Link></li>
                 <li><button className='logout-btn' onClick={handleLogout}>Logout</button></li>
               </ul>
             </nav>

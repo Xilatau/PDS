@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../../Authentication';
+import { useAuth } from '../../../Authentication';
 import style from './styleL.module.css';
 
 export default function Login() {
@@ -27,7 +27,7 @@ export default function Login() {
     // Lógica simples de validação de credenciais
     if (username === 'admin' && password === '123') {
       login(username);
-      navigate('/dashboardClient'); // Redireciona para a página de dashboard após o login bem-sucedido
+      navigate('/dashboard'); // Redireciona para a página de dashboard após o login bem-sucedido
     } else {
       setError(true);
 

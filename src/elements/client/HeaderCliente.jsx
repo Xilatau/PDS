@@ -18,10 +18,10 @@ function HeaderClient(){
                     <li className="user"><strong>Utilizador: {username}</strong></li>
                     <li className="links">
                         <ul>
-                            <li><Link to="/dashboardClient">Dashboard</Link></li>
-                            <li><Link to="/pedidos">Incidencias/Melhorias</Link></li>
-                            <li><Link to="/perfil">Perfil</Link></li>
-                            <li><Link to="/contactos">Contactos</Link></li>
+                            <li><Link to="/dashboard">Dashboard</Link></li>
+                            <li><Link to="/improvement-incidences">Incidencias/Melhorias</Link></li>
+                            <li><Link to="/profile">Perfil</Link></li>
+                            <li><Link to="/contacts">Contactos</Link></li>
                         </ul>
                     </li>
                     <li className="logout"> <button className="logout-btn" onClick={handleLogout}>Logout</button></li>
