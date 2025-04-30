@@ -11,7 +11,7 @@ export function AuthProvider({ children }) {
     setUsername(name);
   };
   const logout = () => {
-    setIsAuthenticated(false);
+    setIsAuthenticated(false); 
     setUsername("");
   };
 
