@@ -2,62 +2,69 @@ import React, { useState } from 'react';
 import './styleP.css';
 
 function Perfil() {
-  const [formData, setFormData] = useState({
-    field1: '',
-    field2: '',
-    field3: ''
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  const [nomeP, setNomeP] = useState();
+  const [nifP, setNifP] = useState();
+  const [portaP, setPortaP] = useState();
+  const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    if (Object.values(errors).some(error => error)) {
+      return;
+    }
+    console.log('Enviado:', {nomeP, nifP, portaP});
   };
 
   return (
     <div className="perfil-container">
+
       <h1>Perfil</h1>
       <form onSubmit={handleSubmit} className="perfil-form">
+
+        {/* nome */}
         <div className="form-group">
-          <label htmlFor="field1">Nome</label>
+          <label>Nome</label>
           <input
             type="text"
-            id="nome"
-            name="nomeP"
-            value={formData.field1}
-            onChange={handleChange}
+            id="nomeP"
+            value={setNomeP}
             className="form-input"
           />
         </div>
+
+        {/* nif */}
         <div className="form-group">
-          <label htmlFor="field2">NIF</label>
+          <label>NIF</label>
           <input
             type="text"
-            id="nif"
-            name="nifP"
-            value={formData.field2}
-            onChange={handleChange}
+            id="nifP"
+            value={setNifP}
+            className="form-input"
+            onChange={(e) => {
+              const value = e.target.value;
+              if ((value.length > 9) || (value.length < 9))  {
+                setErrors(prev => ({ ...prev, nifP: 'O NIF não pode ter mais de 9 dígitos' }));
+              } else {
+                setErrors(prev => ({ ...prev, nifP: '' }));
+              }
+              setNifP(value);
+            }}
+          />
+          {errors.nifP && <div className="error-message">{errors.nifP}</div>}
+        </div>
+
+        {/* porta */}
+        <div className="form-group">
+          <label>Nº de Porta</label>
+          <input
+            type="text"
+            id="portaP"
+            value={setPortaP}
             className="form-input"
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="porta">Nº de Porta</label>
-          <input
-            type="text"
-            id="porta"
-            name="portaP"
-            value={formData.field3}
-            onChange={handleChange}
-            className="form-input"
-          />
-        </div>
+
+        {/* botão de atualizar */}
         <button type="submit" className="submit-button">Atualizar</button>
       </form>
     </div>

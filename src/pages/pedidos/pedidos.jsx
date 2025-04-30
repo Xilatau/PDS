@@ -2,46 +2,42 @@ import React, { useState } from 'react';
 import './stylePedidos.css';
 
 function Pedidos() {
-  const [formData, setFormData] = useState({
-    tipo: 'Incidencia',
-    file: null
-  });
+  const [tipo, setTipo] = useState("");
+  const [assunto, setAssunto] = useState("");
+  const [file, setFile] = useState(null);
 
   const handleTipoChange = (e) => {
-    setFormData(prev => ({
-      ...prev,
-      tipo: e.target.value
-    }));
+    setTipo(e.target.value);
   };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setFormData(prev => ({
-        ...prev,
-        file: file
-      }));
+      setFile(file);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    console.log('Form submitted:', {tipo, assunto, file});
     // Here you would typically handle the file upload and form submission
   };
 
   return (
     <div className="pedidos-container">
+
       <h1>Fazer Pedido</h1>
       <form onSubmit={handleSubmit} className="pedidos-form">
+
+        {/* tipo */}
         <div className="form-group">
-          <label htmlFor="tipo">Tipo de Pedido</label>
+          <label>Tipo de Pedido</label>
           <select
             id="tipo"
             name="tipo"
-            value={formData.tipo}
+            value={tipo}
             onChange={handleTipoChange}
-            className="form-select"
+            className="form-input"
           >
             <option value="Incidencia">Incidência</option>
             <option value="Melhoria">Melhoria</option>
@@ -49,27 +45,29 @@ function Pedidos() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="assunto">Assunto</label>
+          <label>Assunto</label>
           <input
             type="text"
             id="assunto"
             name="assunto"
+            value={assunto}
+            onChange={(e) => setAssunto(e.target.value)}
             className="form-input"
           />
         </div>
         
         <div className="form-group">
-          <label htmlFor="file">Anexar Arquivo</label>
+          <label>Anexar Arquivo</label>
           <input
             type="file"
             id="file"
             name="file"
             onChange={handleFileChange}
-            className="file-input"
+            className="form-input"
             accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
           />
-          {formData.file && (
-            <p className="file-info">{formData.file.name}</p>
+          {file && (
+            <p className="file-info">{file.name}</p>
           )}
         </div>
 

@@ -13,6 +13,7 @@ import HeaderClient from "./elements/client/HeaderCliente";
 import DashboardClient from "./pages/client/dashboard/DashboardClient";
 import Perfil from "./pages/perfil/perfil";
 import Pedidos from "./pages/pedidos/pedidos";
+import Contactos from "./pages/AddContactos/Contactos";
 
 function App() {
   return (
@@ -63,7 +64,6 @@ function App() {
               <>
                 <HeaderClient/>
                 <Perfil/>
-                <Footer/>
               </>
             </PrivateRoute>
           }
@@ -77,12 +77,23 @@ function App() {
               <>
                 <HeaderClient/>
                 <Pedidos/>
-                <Footer/>
               </>
             </PrivateRoute>
           }
         />
-          
+
+        {/*Contactos*/}
+        <Route
+          path="/contactos"
+          element={
+            <PrivateRoute>
+              <>
+                <HeaderClient/>
+                <Contactos/>
+              </>
+            </PrivateRoute>
+          }
+        />
 
       </Routes>
     </AuthProvider>
