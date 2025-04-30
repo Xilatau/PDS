@@ -13,7 +13,7 @@ import HeaderClient from "./elements/client/HeaderCliente";
 import DashboardClient from "./pages/client/dashboard/DashboardClient";
 import Perfil from "./pages/perfil/perfil";
 import Pedidos from "./pages/pedidos/pedidos";
-import Contactos from "./pages/AddContactos/Contactos";
+import Contactos from "./pages/admin/AddContactos/Contactos";
 
 function App() {
   return (

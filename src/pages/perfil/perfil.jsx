@@ -27,8 +27,9 @@ function Perfil() {
           <input
             type="text"
             id="nomeP"
-            value={setNomeP}
+            value={nomeP}
             className="form-input"
+            onChange={(e) => setNomeP(e.target.value)}
           />
         </div>
 
@@ -36,19 +37,22 @@ function Perfil() {
         <div className="form-group">
           <label>NIF</label>
           <input
-            type="text"
+            type="number"
             id="nifP"
-            value={setNifP}
+            value={nifP}
             className="form-input"
             onChange={(e) => {
               const value = e.target.value;
-              if ((value.length > 9) || (value.length < 9))  {
+              if (value.length > 9) {
                 setErrors(prev => ({ ...prev, nifP: 'O NIF não pode ter mais de 9 dígitos' }));
-              } else {
+              } else if (value.length <9) {
+                setErrors(prev => ({ ...prev, nifP: 'O NIF não pode ter menos de 9 dígitos' }));
+              }else{
                 setErrors(prev => ({ ...prev, nifP: '' }));
               }
               setNifP(value);
             }}
+
           />
           {errors.nifP && <div className="error-message">{errors.nifP}</div>}
         </div>
@@ -57,10 +61,11 @@ function Perfil() {
         <div className="form-group">
           <label>Nº de Porta</label>
           <input
-            type="text"
+            type="number"
             id="portaP"
-            value={setPortaP}
+            value={portaP}
             className="form-input"
+            onChange={(e) => setPortaP(e.target.value)}
           />
         </div>
 
