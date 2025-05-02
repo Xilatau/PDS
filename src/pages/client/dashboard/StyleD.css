@@ -1,0 +1,11 @@
+.btn-post{
+    border-radius: 5px;
+    background-color: var(--Background-color1);
+    display: flex;
+    margin: 2.5% auto;
+    justify-content: center;
+    width: 60%;
+    padding: 10px 20px;
+    color: white;
+    font-size: medium;
+}

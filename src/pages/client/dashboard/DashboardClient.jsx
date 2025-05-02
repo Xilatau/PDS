@@ -1,12 +1,13 @@
 import "./StyleD.css";
 import "../../../Style.css"
 
+const Post = () => {
+  
+}
+
 function Dashboard() {
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <p>Welcome to the dashboard!</p>
-    </div>
+    <button className="btn-post" onClick={Post}>Criar Post</button>
   );
 }
 export default Dashboard;
