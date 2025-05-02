@@ -13,6 +13,7 @@ import DashboardAdmin from "./pages/admin/dashboard/DashboardAdmin"
 import HeaderAdmin from "./elements/admin/HeaderAdmin"
 import NavbarV from "./elements/admin/NavBarV"
 import AddContacts from "./pages/admin/addContacts/AddContacts"
+import ContactsAdmin from "./pages/admin/contact/ContactsAdmin"
 
 
 //Paginas Cliente
@@ -53,7 +54,7 @@ function App() {
             <PrivateRoute>
               <>
                 <HeaderAdmin/>
-                {/*Adicionar contactos*/}
+                <ContactsAdmin/>
                 <NavbarV/>
                 <Footer/>
               </>
