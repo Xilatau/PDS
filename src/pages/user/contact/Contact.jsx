@@ -20,12 +20,6 @@ function Contact() {
 
   return (
     <main>
-      <div className="first">
-        <h1 className="first-h">Contactos</h1>
-        <p className="first-p">
-          Inicio&emsp;Reportar incidencias&emsp;Contactos de emergência&emsp;Reuniões
-          <User />
-        </p>
         <div className="white-space"></div>
         <div className="Add-Contact">
           {/* Contactos adicionados */}
@@ -35,21 +29,11 @@ function Contact() {
             contactos.map((c, index) => (
               <div key={index} className="contact-item">
                 <p>{c.contacto} - {c.nome}</p>
-                <button className="delete-button" onClick={() => eliminarContacto(index)}>
-                  Eliminar
-                </button>
               </div>
             ))
             
           )}
-
-          {/* Botão para adicionar novo */}
-          <button className="my-button" onClick={() => navigate('/')}>
-            <CirclePlus size={21} />
-            Adicionar novo contacto
-          </button>
         </div>
-      </div>
     </main>
   );
 }

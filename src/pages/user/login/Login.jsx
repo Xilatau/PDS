@@ -27,12 +27,19 @@ export default function Login() {
     // Lógica simples de validação de credenciais
     if (username === 'admin' && password === '123') {
       login(username);
-      navigate('/dashboard'); // Redireciona para a página de dashboard após o login bem-sucedido
+      navigate('/dashboardAdmin'); // Redireciona para a página de dashboard após o login bem-sucedido
     } else {
       setError(true);
 
+      if (username === 'client' && password === '123') {
+        login(username);
+        navigate('/dashboard'); // Redireciona para a página de dashboard após o login bem-sucedido
+      } else {
+        setError(true);
+      }
+
       // Limpa os campos de input
-      setUsername('');
+      setUsername(username);
       setPassword('');
     }
   };
