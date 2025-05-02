@@ -99,7 +99,7 @@ function App() {
             <PrivateRoute>
               <>
                 <HeaderAdmin/>
-                {/*Adicionar Profile*/}
+                <Perfil/>
                 <NavbarV/>
                 <Footer/>
               </>
