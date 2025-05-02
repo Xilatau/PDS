@@ -44,7 +44,7 @@ export default function Login() {
       </div>
       <div className={style.login}>
         <h2>Login</h2>
-        <p>Faça parte da nossa Comunidade!</p>
+        <p className={style.loginp}>Faça parte da nossa Comunidade!</p>
 
         <form className={style.form} onSubmit={handleLogin}>
           <input

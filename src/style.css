@@ -6,7 +6,6 @@
 }
 
 html, body {
-    height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -64,8 +63,7 @@ header p {
     margin: 0;
     list-style: none;
 }
-  
-  /* link e botão */
+
 .headerClient a,
 .headerClient button.logout-btn {
     text-decoration: none;
