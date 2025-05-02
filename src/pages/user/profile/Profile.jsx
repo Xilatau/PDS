@@ -2,17 +2,30 @@ import React, { useState } from 'react';
 import './styleP.css';
 
 function Perfil() {
-  const [nomeP, setNomeP] = useState();
-  const [nifP, setNifP] = useState();
+  const [nomeP, setNomeP] = useState('');
+  const [stringIMG, setStringIMG] = useState('');
+  const [nifP, setNifP] = useState('');
   const [portaP, setPortaP] = useState();
   const [errors, setErrors] = useState({});
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        // Use setStringIMG to update the state
+        setStringIMG(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (Object.values(errors).some(error => error)) {
       return;
     }
-    console.log('Enviado:', {nomeP, nifP, portaP});
+    console.log('Enviado:', {nomeP, nifP, portaP,stringIMG});
   };
 
   return (
@@ -66,6 +79,18 @@ function Perfil() {
             value={portaP}
             className="form-input"
             onChange={(e) => setPortaP(e.target.value)}
+          />
+        </div>
+
+        {/* profile image */}
+        <div className="form-group">
+          <label htmlFor="profile-image">Profile Image</label>
+          <input
+            type="file"
+            id="profile-image"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="form-input"
           />
         </div>
 

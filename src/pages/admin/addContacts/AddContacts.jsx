@@ -68,8 +68,8 @@ function Contactos() {
                 const value = e.target.value;
                 if (value.length > 9) {
                   setErrors(prev => ({ ...prev, contactoC: 'O contacto não pode ter mais de 9 dígitos' }));
-                } else if (value.length <9) {
-                  setErrors(prev => ({ ...prev, contactoC: 'O contacto não pode ter menos de 9 dígitos' }));
+                } else if (value.length <3) {
+                  setErrors(prev => ({ ...prev, contactoC: 'O contacto não pode ter menos de 3 dígitos' }));
                 }else{
                   setErrors(prev => ({ ...prev, contactoC: '' }));
                 }
