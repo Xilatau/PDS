@@ -28,7 +28,7 @@ export default function Login() {
     if (username === 'admin' && password === '123') {
       login(username);
       navigate('/dashboardAdmin'); // Redireciona para a página de dashboard após o login bem-sucedido
-    } else {
+    } else {  
       setError(true);
 
       if (username === 'client' && password === '123') {
