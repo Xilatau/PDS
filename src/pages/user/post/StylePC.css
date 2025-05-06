@@ -1,0 +1,73 @@
+/* Card do post */
+.post-card {
+background: #fff;                /* fundo branco */
+border: 1px solid #ddd;         /* borda cinzenta suave */
+border-radius: 8px;              /* cantos arredondados */
+overflow: hidden;                /* esconde excesso */
+box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* sombra leve */
+}
+
+/* Cabeçalho do post */
+.post-header {
+display: flex;                   /* coloca avatar e info lado a lado */
+align-items: center;             /* centra verticalmente */
+padding: 12px 16px;              /* espaçamento interno */
+border-bottom: 1px solid #eee;   /* linha de separação */
+}
+
+/* Avatar do utilizador */
+.post-header .avatar {
+width: 40px;                     /* largura fixa */
+height: 40px;                    /* altura fixa */
+border-radius: 50%;              /* torna-o circular */
+object-fit: cover;               /* cobre todo o espaço do elemento */
+margin-right: 12px;              /* espaço entre avatar e texto */
+}
+
+/* Informação do post (título e meta) */
+.post-header .info .title {
+font-size: 18px;                 /* tamanho do título */
+font-weight: 600;                /* negrito */
+margin: 0;                       /* sem margem extra */
+}
+.post-header .info .meta {
+font-size: 12px;                 /* texto mais pequeno */
+color: #777;                     /* cor cinzenta */
+margin-top: 4px;                 /* pequeno espaço acima */
+}
+
+/* Corpo do post */
+.post-body {
+padding: 16px;                   /* espaçamento interno */
+}
+.post-body p {
+margin: 0 0 12px;                /* margem abaixo do parágrafo */
+line-height: 1.5;                /* espaçamento entre linhas */
+}
+.post-body img {
+width: 100%;                     /* imagem responsiva */
+border-radius: 4px;              /* cantos ligeiramente arredondados */
+}
+
+/* (Opcional) Footer do post se houver interação */
+.post-footer {
+padding: 12px 16px;              /* espaçamento interno */
+border-top: 1px solid #eee;      /* linha de separação */
+display: flex;                   
+align-items: center;             
+justify-content: space-between;  /* botão e ações distanciadas */
+}
+
+/* Botão de like/curtir */
+.like-btn {
+background: none;                
+border: none;                    
+cursor: pointer;                 
+font-size: 16px;                 
+display: flex;                   
+align-items: center;             
+}
+.like-btn span {
+margin-left: 6px;                /* separação do ícone e texto */
+font-weight: 500;                
+}

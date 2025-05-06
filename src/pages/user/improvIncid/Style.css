@@ -1,12 +1,12 @@
 *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  }
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
 
-  h1{
-    margin-bottom: 10px;
-  }
+h1{
+  margin-bottom: 10px;
+}
 
 .pedidos-container {
   background-color: white;
@@ -22,6 +22,8 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  width: 65%; 
+  margin: 5% auto;
 }
 
 .pedidos-form {

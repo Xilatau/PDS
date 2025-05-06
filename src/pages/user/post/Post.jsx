@@ -22,8 +22,8 @@ export default function PostModal({ onClose, onSubmit }) {
     <div className="modal-backdrop">
       <div className="modal">
         <h2>Criar Novo Post</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
+        <form className="form-post" onSubmit={handleSubmit}>
+          <label className="label-title">
             Título:
             <input
               type="text"
@@ -32,19 +32,23 @@ export default function PostModal({ onClose, onSubmit }) {
               required
             />
           </label>
-
-          <label>
-            Descrição:
+          <div>
+          <label className="label-message">
+            <div>
+              Descrição:
+            </div>
             <textarea
-              rows="4"
+              rows="7"
               value={message}
               onChange={e => setMessage(e.target.value)}
               required
             />
           </label>
+          </div>
+          
 
           <label>
-            Imagem (opcional):
+            Imagem:
             <input
               type="file"
               accept="image/*"
