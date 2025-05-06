@@ -6,10 +6,18 @@ export default function PostModal({ onClose, onSubmit }) {
   const [title, setTitle] = useState("")
   const [message, setMessage] = useState("")
   const [file, setFile] = useState(null)
+  const [preview, setPreview] = useState(null);
 
   // Guarda o ficheiro escolhido pelo utilizador
-  const handleFileChange = e => {
-    setFile(e.target.files[0])
+  function handleFileChange(e) {
+    const selectedFile = e.target.files[0];
+    if (!selectedFile) return;
+  
+    if (preview) {URL.revokeObjectURL(preview);}
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setFile(selectedFile);
+    setPreview(objectUrl);
   }
 
   // Quando submeter, chama a função passada pelo Dashboard
@@ -45,16 +53,21 @@ export default function PostModal({ onClose, onSubmit }) {
             />
           </label>
           </div>
-          
-
-          <label>
+        
+          <label htmlFor="fileUpload">
             Imagem:
+            </label>
             <input
+              id="fileUpload"
               type="file"
               accept="image/*"
               onChange={handleFileChange}
             />
-          </label>
+            {preview &&
+            <div>
+                <img src={preview} className="preview-image"/>
+            </div>
+            }
 
           <div className="modal-actions">
             <button type="button" onClick={onClose}>

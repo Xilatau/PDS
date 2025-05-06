@@ -6,7 +6,7 @@
 .form-post{
     margin: 2% auto 2%;
     padding: 2% 4% 5%;
-    border: 5px solid #000;
+    border: 3px solid #000;
     border-radius: 5px;
     background-color: white;
 }
@@ -18,7 +18,7 @@
 
 .label-title input{
     width: 75%;
-    margin: 1% 2% 5%;
+    margin: 1% 2% 1.5%;
     padding: 0.7%;
     border-radius: 5px;
     border: 1px solid #000;
@@ -31,6 +31,14 @@
     width: 75%;
     padding: 0.7%;
     margin: 1% 13% 3%;
+    border-radius: 5px;
+    border: 1px solid #000;
+}
+
+.preview-image{
+    max-width: 50%;
+    max-height: 50%;
+    margin: 5% auto;
     border-radius: 5px;
     border: 1px solid #000;
 }
