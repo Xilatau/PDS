@@ -6,10 +6,18 @@ export default function PostModal({ onClose, onSubmit }) {
   const [title, setTitle] = useState("")
   const [message, setMessage] = useState("")
   const [file, setFile] = useState(null)
+  const [preview, setPreview] = useState(null);
 
   // Guarda o ficheiro escolhido pelo utilizador
-  const handleFileChange = e => {
-    setFile(e.target.files[0])
+  function handleFileChange(e) {
+    const selectedFile = e.target.files[0];
+    if (!selectedFile) return;
+  
+    if (preview) {URL.revokeObjectURL(preview);}
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setFile(selectedFile);
+    setPreview(objectUrl);
   }
 
   // Quando submeter, chama a função passada pelo Dashboard
@@ -22,8 +30,8 @@ export default function PostModal({ onClose, onSubmit }) {
     <div className="modal-backdrop">
       <div className="modal">
         <h2>Criar Novo Post</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
+        <form className="form-post" onSubmit={handleSubmit}>
+          <label className="label-title">
             Título:
             <input
               type="text"
@@ -32,25 +40,34 @@ export default function PostModal({ onClose, onSubmit }) {
               required
             />
           </label>
-
-          <label>
-            Descrição:
+          <div>
+          <label className="label-message">
+            <div>
+              Descrição:
+            </div>
             <textarea
-              rows="4"
+              rows="7"
               value={message}
               onChange={e => setMessage(e.target.value)}
               required
             />
           </label>
-
-          <label>
-            Imagem (opcional):
+          </div>
+        
+          <label htmlFor="fileUpload">
+            Imagem:
+            </label>
             <input
+              id="fileUpload"
               type="file"
               accept="image/*"
               onChange={handleFileChange}
             />
-          </label>
+            {preview &&
+            <div>
+                <img src={preview} className="preview-image"/>
+            </div>
+            }
 
           <div className="modal-actions">
             <button type="button" onClick={onClose}>
