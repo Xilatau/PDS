@@ -9,3 +9,15 @@
     color: white;
     font-size: medium;
 }
+
+.btn-post:hover {
+opacity: 0.9;
+}
+
+/* Feed de posts */
+.feed {
+margin-top: 24px;
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
