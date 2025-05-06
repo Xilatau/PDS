@@ -19,9 +19,7 @@ function Contact() {
   };
 
   return (
-    <main>
-        <div className="white-space"></div>
-        <div className="Add-Contact">
+    <div className="contact-container">
           {/* Contactos adicionados */}
           {contactos.length === 0 ? (
             <p>Nenhum contacto adicionado.</p>
@@ -30,11 +28,9 @@ function Contact() {
               <div key={index} className="contact-item">
                 <p>{c.contacto} - {c.nome}</p>
               </div>
-            ))
-            
+            ))       
           )}
         </div>
-    </main>
   );
 }
 
