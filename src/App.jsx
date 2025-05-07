@@ -14,7 +14,7 @@ import HeaderAdmin from "./elements/admin/HeaderAdmin"
 import NavbarV from "./elements/admin/NavBarV"
 import AddContacts from "./pages/admin/addContacts/AddContacts"
 import ContactsAdmin from "./pages/admin/contact/ContactsAdmin"
-
+import CreateClient from "./pages/admin/CreateClient/CreateClient"
 
 //Paginas Cliente
 import HeaderClient from "./elements/client/HeaderCliente"
@@ -45,6 +45,21 @@ function App() {
               </>
             </PrivateRoute>
           }  
+        />
+        
+          {/*CreateClient*/}
+        <Route
+          path="/createClient"
+          element={
+            <PrivateRoute>
+              <>
+                <HeaderAdmin/>
+                <CreateClient/>
+                <NavbarV/>
+                <Footer/>
+              </>
+            </PrivateRoute>
+          } 
         />
         
         {/*Contacts*/}

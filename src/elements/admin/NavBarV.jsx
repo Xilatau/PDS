@@ -31,6 +31,7 @@ export default function VerticalNavbar() {
             <nav>
               <ul>
                 <li><Link to="/dashboardAdmin">Dashboard</Link></li>
+                <li><Link to="/createClient">Criar Cliente</Link></li>
                 <li><Link to="/improvement-incidencesAdmin">Improvement/Incidences</Link></li>
                 <li><Link to="/ContactsAdmin">Contactos</Link></li>
                 <li><Link to="/AddContacts">Adicionar Contactos</Link></li>
