@@ -35,10 +35,45 @@
     border: 1px solid #000;
 }
 
+.file-upload{
+    width: 85%;
+    display: flex;
+    border: 1px solid #000;
+}
+
 .preview-image{
-    max-width: 50%;
-    max-height: 50%;
+    max-height: 30%; 
+    max-width: 30%;  
+    display: flex;
     margin: 5% auto;
     border-radius: 5px;
     border: 1px solid #000;
+}
+
+.modal-actions{
+    display: flex;
+    justify-content: space-between;
+    margin: 2% auto 0;   
+}
+
+.modal-actions button{
+    width: 20%;
+    padding: 1%;
+    border-radius: 5px;
+    border: 1px solid #000;
+    background-color: #000;
+    color: white;
+    cursor: pointer;
+}
+
+.modal-actions button:hover{
+    transition: 0.3s;
+    color: var(--Background-color1);
+    border: 1px solid var(--Background-color1);
+}
+
+.modal-actions .btn-cancel:hover{
+    transition: 0.3s;
+    color: red;
+    border: 1px solid red;
 }

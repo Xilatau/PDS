@@ -1,28 +1,25 @@
+// src/components/Dashboard/PostModal.jsx
 import React, { useState } from "react"
 import "./StyleP.css"
 
 export default function PostModal({ onClose, onSubmit }) {
-  // Estado para título, descrição e ficheiro
   const [title, setTitle] = useState("")
   const [message, setMessage] = useState("")
   const [file, setFile] = useState(null)
-  const [preview, setPreview] = useState(null);
+  const [preview, setPreview] = useState(null)
 
-  // Guarda o ficheiro escolhido pelo utilizador
-  function handleFileChange(e) {
-    const selectedFile = e.target.files[0];
-    if (!selectedFile) return;
-  
-    if (preview) {URL.revokeObjectURL(preview);}
-
-    const objectUrl = URL.createObjectURL(selectedFile);
-    setFile(selectedFile);
-    setPreview(objectUrl);
+  const handleFileChange = e => {
+    const selectedFile = e.target.files[0]
+    if (!selectedFile) return
+    if (preview) URL.revokeObjectURL(preview)
+    const url = URL.createObjectURL(selectedFile)
+    setFile(selectedFile)
+    setPreview(url)
   }
 
-  // Quando submeter, chama a função passada pelo Dashboard
   const handleSubmit = e => {
     e.preventDefault()
+    console.log("Modal a submeter:", { title, message, file })
     onSubmit({ title, message, file })
   }
 
@@ -40,11 +37,9 @@ export default function PostModal({ onClose, onSubmit }) {
               required
             />
           </label>
-          <div>
+
           <label className="label-message">
-            <div>
-              Descrição:
-            </div>
+            Descrição:
             <textarea
               rows="7"
               value={message}
@@ -52,25 +47,28 @@ export default function PostModal({ onClose, onSubmit }) {
               required
             />
           </label>
-          </div>
-        
+
           <label htmlFor="fileUpload">
-            Imagem:
-            </label>
-            <input
-              id="fileUpload"
-              type="file"
-              accept="image/*"
-              onChange={handleFileChange}
+            Imagem (opcional):
+          </label>
+          <input
+            id="fileUpload"
+            className="file-upload"
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+          />
+          {preview && (
+            <img
+              src={preview}
+              className="preview-image"
+              alt="Pré-visualização"
+              onLoad={() => URL.revokeObjectURL(preview)}
             />
-            {preview &&
-            <div>
-                <img src={preview} className="preview-image"/>
-            </div>
-            }
+          )}
 
           <div className="modal-actions">
-            <button type="button" onClick={onClose}>
+            <button className="btn-cancel" type="button" onClick={onClose}>
               Cancelar
             </button>
             <button type="submit" className="primary">
