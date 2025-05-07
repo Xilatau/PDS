@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import './createClient.css';
 
 const OrderRequestPage = () => {
-  const [orderType, setOrderType] = useState('');
-  const [subject, setSubject] = useState('');
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [nomeCliente, setnomeCliente]=useState('');
+  const [emailCliente, setemailCLiente]=useState('');
+  const [numPorta, setnumPorta]=useState('');
+  const [nomeCondominio, setnomeCondominio]=useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
     console.log({
-      orderType,
-      subject,
-      file: selectedFile ? selectedFile.name : 'No file selected'
+      nomeCliente,
+      emailCliente,
+      numPorta,
+      nomeCondominio
     });
     alert('Pedido enviado com sucesso!');
   };
@@ -27,43 +29,43 @@ const OrderRequestPage = () => {
       
       <form onSubmit={handleSubmit}>
       <div className="form-group">
-          <label htmlFor="subject">Nome do Cliente</label>
+          <label htmlFor="nomeCliente">Nome do Cliente</label>
           <input 
             type="text" 
-            id="subject" 
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
+            id="nomeCliente" 
+            value={nomeCliente}
+            onChange={(e) => setnomeCliente(e.target.value)}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="subject">Email do Cliente</label>
+          <label htmlFor="emailCliente">Email do Cliente</label>
           <input 
             type="text" 
-            id="subject" 
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
+            id="emailCliente" 
+            value={emailCliente}
+            onChange={(e) => setemailCLiente(e.target.value)}
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="subject">Nº da Porta</label>
+          <label htmlFor="numPorta">Nº da Porta</label>
           <input 
-            type="text" 
-            id="subject" 
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
+            type="number" 
+            id="numPorta" 
+            value={numPorta}
+            onChange={(e) => setnumPorta(e.target.value)}
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="subject">Condomínio</label>
+          <label htmlFor="nomeCondominio">Condomínio</label>
           <input 
             type="text" 
-            id="subject" 
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
+            id="nomeCondominio" 
+            value={nomeCondominio}
+            onChange={(e) => setnomeCondominio(e.target.value)}
             required
           />
         </div>
