@@ -23,6 +23,7 @@ export async function getPosts() {
   export async function createPost({ userId, title, message }) {
     const payload = {
       utilizadorId: userId,
+      tag: "post",
       titulo: title,
       mensagem: message,
       createdOn: new Date().toISOString()

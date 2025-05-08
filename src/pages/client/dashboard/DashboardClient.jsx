@@ -34,7 +34,8 @@ export default function Dashboard() {
 
   const handleSubmit = async ({ title, message }) => {
     const created = await createPost({
-      userId: user.id,
+      userId: localStorage.getItem("userId"),
+      tag: "post",
       title,
       message
     })
