@@ -19,6 +19,7 @@ export default function Dashboard() {
         id: p.id,
         title: p.titulo,
         message: p.mensagem,
+        imageUrl: p.foto,
         createdAt: p.createdOn,
         userName: `Utilizador ${p.utilizadorId}`
       }))
