@@ -32,12 +32,13 @@ export default function Dashboard() {
 
   const handleCreateClick = () => setShowModal(true)
 
-  const handleSubmit = async ({ title, message }) => {
+  const handleSubmit = async ({ title, message, imageBase64 }) => {
     const created = await createPost({
       userId: localStorage.getItem("userId"),
       tag: "post",
       title,
-      message
+      message,
+      file: imageBase64
     })
     setPosts(prev => [
       {

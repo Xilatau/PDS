@@ -20,12 +20,13 @@ export async function getPosts() {
   /**
    * Criar um novo post
    */
-  export async function createPost({ userId, title, message }) {
+  export async function createPost({ userId, title, message, file }) {
     const payload = {
       utilizadorId: userId,
       tag: "post",
       titulo: title,
       mensagem: message,
+      foto: file,
       createdOn: new Date().toISOString()
     };
     const res = await fetch("https://localhost:7061/post/novo", {

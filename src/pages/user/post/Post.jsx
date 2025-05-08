@@ -5,10 +5,10 @@ import "./StyleP.css"
 export default function PostModal({ onClose, onSubmit }) {
   const [title, setTitle] = useState("")
   const [message, setMessage] = useState("")
-  const [file, setFile] = useState(null)
+  const [file, setFile] = useState("")
   const [preview, setPreview] = useState(null)
 
-  const handleFileChange = e => {
+  /*const handleFileChange = e => {
     const selectedFile = e.target.files[0]
     if (!selectedFile) return
     if (preview) URL.revokeObjectURL(preview)
@@ -19,9 +19,34 @@ export default function PostModal({ onClose, onSubmit }) {
 
   const handleSubmit = e => {
     e.preventDefault()
+    
     console.log("Modal a submeter:", { title, message, file })
     onSubmit({ title, message, file })
-  }
+  }*/
+
+    const handleFileChange = (e) => {
+      const selectedFile = e.target.files[0];
+      if (!selectedFile) return;
+    
+      // Gerar preview
+      if (preview) URL.revokeObjectURL(preview);
+      const url = URL.createObjectURL(selectedFile);
+      setPreview(url);
+    
+      // Converter para Base64
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFile(reader.result); // aqui guardamos o Base64 diretamente no estado
+      };
+      reader.readAsDataURL(selectedFile);
+    };
+    const handleSubmit = (e) => {
+      e.preventDefault();
+    
+      console.log("Modal a submeter:", { title, message, imageBase64: file });
+      onSubmit({ title, message, imageBase64: file });
+    };
+        
 
   return (
     <div className="modal-backdrop">
