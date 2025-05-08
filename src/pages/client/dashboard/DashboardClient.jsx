@@ -4,6 +4,7 @@ import { useAuth } from "../../../Authentication"
 import PostModal from "../../user/post/Post"
 import PostCard from "../../user/post/PostCard"
 import "./StyleD.css"
+
 export default function Dashboard() {
   const { user } = useAuth()
   const [posts, setPosts] = useState([])

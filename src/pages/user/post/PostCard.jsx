@@ -1,6 +1,7 @@
 import React from "react"
 import "./StylePC.css"
 
+
 export default function PostCard({ post }) {
   return (
     <div className="post-card">

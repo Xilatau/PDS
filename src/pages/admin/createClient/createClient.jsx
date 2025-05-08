@@ -40,7 +40,7 @@ const OrderRequestPage = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="emailCliente">Email do Cliente</label>
+          <label htmlFor="emailCliente">Contacto Cliente</label>
           <input 
             type="text" 
             id="emailCliente" 
@@ -56,16 +56,6 @@ const OrderRequestPage = () => {
             id="numPorta" 
             value={numPorta}
             onChange={(e) => setnumPorta(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="nomeCondominio">Condomínio</label>
-          <input 
-            type="text" 
-            id="nomeCondominio" 
-            value={nomeCondominio}
-            onChange={(e) => setnomeCondominio(e.target.value)}
             required
           />
         </div>

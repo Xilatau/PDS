@@ -16,7 +16,7 @@ export default function VerticalNavbar() {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate('/');
   }
 
   return (  
@@ -34,7 +34,6 @@ export default function VerticalNavbar() {
                 <li><Link to="/createClient">Criar Cliente</Link></li>
                 <li><Link to="/improvement-incidencesAdmin">Improvement/Incidences</Link></li>
                 <li><Link to="/ContactsAdmin">Contactos</Link></li>
-                <li><Link to="/AddContacts">Adicionar Contactos</Link></li>
                 <li><Link to="/profileAdmin">Perfil</Link></li>
                 <li><button className='logout-btn' onClick={handleLogout}>Logout</button></li>
               </ul>

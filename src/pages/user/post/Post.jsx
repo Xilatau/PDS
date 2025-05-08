@@ -1,4 +1,4 @@
-// src/components/Dashboard/PostModal.jsx
+
 import React, { useState } from "react"
 import "./StyleP.css"
 
