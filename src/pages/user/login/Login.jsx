@@ -24,6 +24,7 @@ export default function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
 
+    /*
     // Lógica simples de validação de credenciais
     if (username === 'admin' && password === '123') {
       login(username);
@@ -41,7 +42,30 @@ export default function Login() {
       // Limpa os campos de input
       setUsername(username);
       setPassword('');
-    }
+    }*/
+
+      //use api
+    fetch('https://localhost:7061/login/'+username+'/'+password)
+      .then(response => {
+        if (!response.ok) throw new Error("Erro na API");
+        return response.json();
+      })
+      .then(data => {
+        console.log("Dados recebidos:", data);
+        login(username);
+        localStorage.setItem('userId', JSON.stringify(data.idUser));
+        localStorage.setItem('admin', JSON.stringify(data.admin));
+        if(data.admin){
+          console.log("admin");
+          navigate('/dashboardAdmin'); // Redireciona para a página de dashboard após o login bem-sucedido
+        }else{
+          console.log("user");
+          navigate('/dashboard'); // Redireciona para a página de dashboard após o login bem-sucedido
+        }
+      })
+      .catch(error => {
+        console.error("Erro ao conectar com a API:", error);
+      });
   };
 
   return (
