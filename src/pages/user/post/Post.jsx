@@ -1,6 +1,6 @@
-
 import React, { useState } from "react"
 import "./StyleP.css"
+
 
 export default function PostModal({ onClose, onSubmit }) {
   const [title, setTitle] = useState("")

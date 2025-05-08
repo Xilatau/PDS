@@ -9,12 +9,11 @@ export default function PostCard({ post }) {
         <img
           className="avatar"
           src={post.userAvatar || "/default-avatar.png"}
-          alt={post.userName}
         />
         <div className="info">
           <div className="title">{post.title}</div>
           <div className="meta">
-            {post.userName} ·{" "}
+            {post.userName} ·{""}
             {new Date(post.createdAt).toLocaleDateString()}
           </div>
         </div>
@@ -22,7 +21,7 @@ export default function PostCard({ post }) {
       <div className="post-body">
         <p>{post.message}</p>
         {post.imageUrl && (
-          <img src={post.imageUrl} alt={post.title} />
+          <img src={post.imageUrl}/>
         )}
       </div>
     </div>

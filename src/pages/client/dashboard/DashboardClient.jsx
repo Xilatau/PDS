@@ -1,8 +1,9 @@
-// src/components/Dashboard.jsx
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useAuth } from "../../../Authentication"
 import PostModal from "../../user/post/Post"
 import PostCard from "../../user/post/PostCard"
+
+import { getPosts, createPost } from "../../../api/ApiPost"
 import "./StyleD.css"
 
 export default function Dashboard() {
@@ -10,22 +11,43 @@ export default function Dashboard() {
   const [posts, setPosts] = useState([])
   const [showModal, setShowModal] = useState(false)
 
-  const handleCreateClick = () => {
-    setShowModal(true)
-  }
-
-  const handleSubmit = ({ title, message, file }) => {
-    console.log("handleSubmit chamado com:", title, message, file)
-    const newPost = {
-      id: Date.now(),
-      userName: user?.username || "Anónimo",
-      userAvatar: user?.avatarUrl || null,
-      title,
-      message,
-      imageUrl: file ? URL.createObjectURL(file) : null,
-      createdAt: new Date().toISOString(),
+  // 1)API - Obter posts
+  useEffect(() => {
+    async function load() {
+      const feed = await getPosts()
+      const mapped = feed.map(p => ({
+        id: p.id,
+        title: p.titulo,
+        message: p.mensagem,
+        createdAt: p.createdOn,
+        userName: `Utilizador ${p.utilizadorId}`
+      }))
+      setPosts(mapped)
     }
-    setPosts(prev => [newPost, ...prev])
+    load()
+  }, [])
+
+  // 2)API - Criar post
+
+
+  const handleCreateClick = () => setShowModal(true)
+
+  const handleSubmit = async ({ title, message }) => {
+    const created = await createPost({
+      userId: user.id,
+      title,
+      message
+    })
+    setPosts(prev => [
+      {
+        id: created.id,
+        title: created.titulo,
+        message: created.mensagem,
+        createdAt: created.createdOn,
+        userName: `Utilizador ${created.utilizadorId}`
+      },
+      ...prev
+    ])
     setShowModal(false)
   }
 
@@ -36,19 +58,15 @@ export default function Dashboard() {
       </button>
 
       {showModal && (
-        <PostModal
-          onClose={() => setShowModal(false)}
-          onSubmit={handleSubmit}
-        />
+        <PostModal onClose={() => setShowModal(false)} onSubmit={handleSubmit} />
       )}
 
       <div className="feed">
-        {posts.length === 0 && (
-          <p className="no-posts">Ainda não há posts. Cria o primeiro!</p>
+        {posts.length === 0 ? (
+          <p className="no-posts">Ainda não há posts.</p>
+        ) : (
+          posts.map(post => <PostCard key={post.id} post={post} />)
         )}
-        {posts.map(post => (
-          <PostCard key={post.id} post={post} />
-        ))}
       </div>
     </div>
   )

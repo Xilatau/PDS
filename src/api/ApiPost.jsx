@@ -1,29 +1,38 @@
-//use api
+// src/api/ApiPost.js
 
-import { data } from "react-router-dom";
-
-export function GetPost () {
-e.preventDefault();
-fetch('https://localhost:7061/post/feed')
-    .then(response => {
-    if (!response.ok) throw new Error("Erro na API");
-    return response.json();
-    })
-    .then(data => { 
-        return data.$values;})
-    .catch(error => {
-    console.error("Erro ao conectar com a API:", error);
+/**
+ * Obter todos os posts
+ * -> devolve sempre um array (mesmo que vazio)
+ */
+export async function getPosts() {
+    try {
+      const res = await fetch("https://localhost:7061/post/feed");
+      if (!res.ok) throw new Error("Erro na API ao obter posts");
+      const data = await res.json();
+      // data tem forma { $id: "...", $values: [ ... ] }
+      return data.$values ?? [];
+    } catch (err) {
+      console.error("API getPosts erro:", err);
+      return [];  // garante que devolvemos um array
+    }
+  }
+  
+  /**
+   * Criar um novo post
+   */
+  export async function createPost({ userId, title, message }) {
+    const payload = {
+      utilizadorId: userId,
+      titulo: title,
+      mensagem: message,
+      createdOn: new Date().toISOString()
+    };
+    const res = await fetch("https://localhost:7061/post/novo", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
     });
-    
-};
-
-export async function createPost({ userName, title, message }) {
-    const payload = { userName, title, message, createdAt: new Date().toISOString() }
-    const res = await fetch('https://localhost:7061/post/novo', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-    })
-    if (!res.ok) throw new Error("Falha ao criar o post")
-    return res.json()
-}
+    if (!res.ok) throw new Error("Erro na API ao criar post");
+    return res.json();
+  }
+  
