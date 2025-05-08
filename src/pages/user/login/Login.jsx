@@ -31,6 +31,10 @@ export default function Login() {
       })
       .then(data => {
         console.log("Dados recebidos:", data);
+        if(data.user==null){
+          setError(true);
+          return;
+        }
         login(data.user);
         localStorage.setItem('userId', JSON.stringify(data.idUser));
         localStorage.setItem('admin', JSON.stringify(data.admin));
