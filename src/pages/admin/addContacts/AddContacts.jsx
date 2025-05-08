@@ -31,7 +31,7 @@ function Contactos() {
     localStorage.setItem('contactos', JSON.stringify(contactosAtualizados));
   
     // Redirecionar para página de contactos
-    navigate('/contacts');
+    navigate('/contactsAdmin');
   };
   
 
