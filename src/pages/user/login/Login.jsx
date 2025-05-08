@@ -23,28 +23,7 @@ export default function Login() {
   // Função para lidar com o submit do formulário
   const handleLogin = (e) => {
     e.preventDefault();
-
-    /*
-    // Lógica simples de validação de credenciais
-    if (username === 'admin' && password === '123') {
-      login(username);
-      navigate('/dashboardAdmin'); // Redireciona para a página de dashboard após o login bem-sucedido
-    } else {  
-      setError(true);
-
-      if (username === 'client' && password === '123') {
-        login(username);
-        navigate('/dashboard'); // Redireciona para a página de dashboard após o login bem-sucedido
-      } else {
-        setError(true);
-      }
-
-      // Limpa os campos de input
-      setUsername(username);
-      setPassword('');
-    }*/
-
-      //use api
+    //usa api
     fetch('https://localhost:7061/login/'+username+'/'+password)
       .then(response => {
         if (!response.ok) throw new Error("Erro na API");
@@ -52,7 +31,7 @@ export default function Login() {
       })
       .then(data => {
         console.log("Dados recebidos:", data);
-        login(username);
+        login(data.user);
         localStorage.setItem('userId', JSON.stringify(data.idUser));
         localStorage.setItem('admin', JSON.stringify(data.admin));
         if(data.admin){
