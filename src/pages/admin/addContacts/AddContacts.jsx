@@ -11,31 +11,28 @@ function Contactos() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  
     if (Object.values(errors).some(error => error)) {
       return;
     }
-    console.log('Enviado:', {nomeC, contactoC});
-  };
-/*
-    const novoContacto = { nomeC, contactoC };
-
-    // Buscar contactos guardados anteriormente
-    const contactosGuardados = JSON.parse(localStorage.getItem('contactos')) || [];
-
-    // Adicionar novo contacto à lista
-    contactosGuardados.push(novoContacto);
-
-    // Guardar de volta no localStorage
-    localStorage.setItem('contactos', JSON.stringify(contactosGuardados));
-
-    // Limpar campos
-    setNomeC("");
-    setContactoC("");
   
-    // Redirecionar para a página de contactos
-    navigate('/contact');
-    */
- 
+    const novoContacto = {
+      nome: nomeC,
+      contacto: contactoC,
+    };
+  
+    // Buscar contactos existentes
+    const contactosExistentes = JSON.parse(localStorage.getItem('contactos')) || [];
+  
+    // Adicionar novo
+    const contactosAtualizados = [...contactosExistentes, novoContacto];
+  
+    // Guardar no localStorage
+    localStorage.setItem('contactos', JSON.stringify(contactosAtualizados));
+  
+    // Redirecionar para página de contactos
+    navigate('/contacts');
+  };
   
 
   return (
@@ -80,10 +77,10 @@ function Contactos() {
           </div>
 
           {/* botão de enviar */}
-          <button type="submit" className="Button">Adicionar</button>
+          <button type="submit" className="Button" >Adicionar</button>
         </form>
     </div>
   );
 }
 
-export default Contactos;
+export default Contactos; 
