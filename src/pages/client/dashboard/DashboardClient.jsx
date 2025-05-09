@@ -21,7 +21,7 @@ export default function Dashboard() {
         message: p.mensagem,
         imageUrl: p.foto,
         createdAt: p.createdOn,
-        userName: `Utilizador ${p.utilizadorId}`
+        userName: p.utilizadorId
       }))
       setPosts(mapped)
     }
@@ -34,25 +34,34 @@ export default function Dashboard() {
   const handleCreateClick = () => setShowModal(true)
 
   const handleSubmit = async ({ title, message, imageBase64 }) => {
-    const created = await createPost({
-      userId: localStorage.getItem("userId"),
-      tag: "post",
-      title,
-      message,
-      file: imageBase64
-    })
-    setPosts(prev => [
-      {
-        id: created.id,
-        title: created.titulo,
-        message: created.mensagem,
-        createdAt: created.createdOn,
-        userName: `Utilizador ${created.utilizadorId}`
-      },
-      ...prev
-    ])
-    setShowModal(false)
-  }
+    try {
+      await createPost({
+        userId: localStorage.getItem("userId"),
+        tag: "post",
+        title,
+        message,
+        file: imageBase64
+      });
+  
+      // Recarrega os posts
+      const feed = await getPosts();
+      const mapped = feed.map(p => ({
+        id: p.id,
+        title: p.titulo,
+        message: p.mensagem,
+        imageUrl: p.foto,
+        createdAt: p.createdOn,
+        userName: p.utilizadorId
+      }));
+      setPosts(mapped);
+  
+      // Fecha o modal
+      setShowModal(false);
+    } catch (error) {
+      console.error("Erro ao criar post:", error);
+    }
+  };
+  
 
   return (
     <div className="dashboard-container">

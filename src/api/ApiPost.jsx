@@ -35,6 +35,8 @@ export async function getPosts() {
       body: JSON.stringify(payload)
     });
     if (!res.ok) throw new Error("Erro na API ao criar post");
-    return res.json();
+
+  const text = await res.text();
+  return text ? JSON.parse(text) : {}; // evita erro se a resposta for vazia
   }
   
