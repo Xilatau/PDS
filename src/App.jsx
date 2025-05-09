@@ -16,6 +16,7 @@ import NavbarV from "./elements/admin/NavBarV"
 import AddContacts from "./pages/admin/addContacts/AddContacts"
 import ContactsAdmin from "./pages/admin/contact/ContactsAdmin"
 import CreateClient from "./pages/admin/createClient/createClient"
+import ImprovIncidAdmin from "./pages/admin/improvIncid/ImprovIncid"
 
 //Paginas Cliente
 import HeaderClient from "./elements/client/HeaderCliente"
@@ -100,7 +101,7 @@ function App() {
             <PrivateRoute>
               <>
                 <HeaderAdmin/>
-                {/*Adicionar improvement-incidences*/}
+                <ImprovIncidAdmin/>
                 <NavbarV/>
                 <Footer/>
               </>
