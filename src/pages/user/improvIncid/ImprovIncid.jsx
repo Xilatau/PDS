@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { createImprov } from "../../../api/ApiImprov";
-
+import { useNavigate } from 'react-router-dom';
 import './style.css';
 
 function Pedidos() {
+  const navigate = useNavigate();
   const [tag, setTag] = useState("Incidencia");
   const [assunto, setAssunto] = useState("");
   const [file, setFile] = useState("");
@@ -39,6 +40,7 @@ function Pedidos() {
           tag,
           file
         });
+        navigate('/dashboard');
       } catch (error) {
         console.error("Erro ao criar incidencia:", error);
       }
