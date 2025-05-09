@@ -1,26 +1,80 @@
 import React, { useState } from 'react';
 import './createClient.css';
+import { createClient } from '../../../api/ApiClient..jsx';
+import { NfcIcon } from 'lucide-react';
 
 const OrderRequestPage = () => {
   const [nomeCliente, setnomeCliente]=useState('');
   const [emailCliente, setemailCLiente]=useState('');
   const [numPorta, setnumPorta]=useState('');
-  const [nomeCondominio, setnomeCondominio]=useState('');
+  const [nif, setnif]=useState(0);
+  const [password, setpassword]=useState('');
 
-  const handleSubmit = (e) => {
+  const getCondoId = async () => {
+    try {
+      const response = await fetch('https://localhost:7061/user/' + localStorage.getItem("userId"));
+      if (!response.ok) throw new Error("Erro na API");
+      const data = await response.json();
+      console.log("Dados recebidos:", data);
+      return data;
+    } catch (error) {
+      console.error("Erro ao conectar com a API:", error);
+      return null;
+    }
+  };
+
+  /*const createClient = async ({nome, nif, contacto, contactoTag, nPorta, password, condominioId}) => {
+    try {
+      const response = await fetch('https://localhost:7061/user/novo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nome: nome,
+          nif: nif,
+          contacto: contacto,
+          contactoTag: "",
+          nPorta: nPorta,
+          password: password,
+          condominioId: condominioId
+        }),
+      })
+      .then(response => {
+        if (!response.ok) throw new Error("Erro na API");
+        return response.json();
+      })
+      .catch(error => {
+        console.error("Erro ao conectar com a API:", error);
+      });
+    } catch (error) {
+      console.error("Erro ao conectar com a API:", error);
+    }
+  };*/
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const user = await getCondoId();
+    console.log(user);
     // Handle form submission logic here
     console.log({
       nomeCliente,
       emailCliente,
       numPorta,
-      nomeCondominio
+      idCondominio:user.condominioId
     });
-    alert('Pedido enviado com sucesso!');
-  };
+    createClient({
+      nome: nomeCliente,
+      nif: nif,
+      contacto: emailCliente,
+      contactoTag: "",
+      nPorta: numPorta,
+      password: password,
+      condominioId: user.condominioId
+    });
 
-  const handleFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
+    alert('Pedido enviado com sucesso!');
   };
 
   return (
@@ -35,6 +89,17 @@ const OrderRequestPage = () => {
             id="nomeCliente" 
             value={nomeCliente}
             onChange={(e) => setnomeCliente(e.target.value)}
+            required
+          />
+        </div>
+        
+        <div className="form-group">
+          <label htmlFor="nif">NIF</label>
+          <input 
+            type="number" 
+            id="nif" 
+            value={nif}
+            onChange={(e) => setnif(e.target.value)}
             required
           />
         </div>
@@ -56,6 +121,17 @@ const OrderRequestPage = () => {
             id="numPorta" 
             value={numPorta}
             onChange={(e) => setnumPorta(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            value={password}
+            onChange={(e) => setpassword(e.target.value)}
             required
           />
         </div>
