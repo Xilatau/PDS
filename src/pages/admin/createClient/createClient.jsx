@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './createClient.css';
-import { createClient } from '../../../api/ApiClient..jsx';
+import { createClient } from '../../../api/ApiClient.jsx';
 import { NfcIcon } from 'lucide-react';
 
 const OrderRequestPage = () => {

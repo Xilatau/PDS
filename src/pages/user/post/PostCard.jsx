@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import "./StylePC.css"
-import { getClient } from "../../../api/ApiClient..jsx"
+import { getClient } from "../../../api/ApiClient.jsx"
 
 export default function PostCard({ post }) {
 
