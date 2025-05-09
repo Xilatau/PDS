@@ -7,6 +7,7 @@ import Login from "./pages/user/login/Login"
 import Footer from "./elements/Footer"
 import ImprovIncid from "./pages/user/improvIncid/ImprovIncid"
 import Contacts from "./pages/user/contact/Contact"
+import Reuniao from "./pages/user/reuniao/Reuniao"
 
 //Paginas Admin
 import DashboardAdmin from "./pages/admin/dashboard/DashboardAdmin"
@@ -175,6 +176,20 @@ function App() {
             </PrivateRoute>
           }
         />
+
+         {/*Reunião*/}
+         <Route
+          path="/reuniao"
+          element={
+            <PrivateRoute>
+              <>
+                <HeaderClient/>
+                <Reuniao/>
+              </>
+            </PrivateRoute>
+          }
+        />
+
         {/* Fim Cliente*/}
 
       </Routes>
