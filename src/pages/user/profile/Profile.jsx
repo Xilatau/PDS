@@ -1,17 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styleP.css';
+import { fetchUserProfile,updateProfile } from '../../../api/ApiPerfil.jsx';
 
 function Perfil() {
+  //Variaveis dos campos input
   const [nomeP, setNomeP] = useState('');
   const [stringIMG, setStringIMG] = useState('');
   const [nifP, setNifP] = useState('');
   const [portaP, setPortaP] = useState();
   const [errors, setErrors] = useState({});
 
+  //Variaveis para butoes lock/unlock
   const [editNome, setEditNome] = useState(false);
   const [editNif, setEditNif] = useState(false);
   const [editPorta, setEditPorta] = useState(false);
   const [editImg, setEditImg] = useState(false);
+
+  useEffect(() => {
+		// Suponha que o ID do usuário da sessão seja armazenado no localStorage
+		const userId = localStorage.getItem('userId'); // Obtenha o ID do usuário da sessão
+
+		if (userId) {
+		  fetchUserProfile(userId)
+			.then(data => {
+			  setNomeP(data.nome);
+			  setNifP(data.nif);
+			  setPortaP(data.nPorta);
+			  setStringIMG(data.stringIMG);
+			})
+			.catch(error => {
+			  console.error('Failed to load user profile:', error);
+			});
+		} else {
+		  console.error('User ID not found in session.');
+		}
+	  }, []);
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -24,13 +47,31 @@ function Perfil() {
     }
   };
 
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (Object.values(errors).some(error => error)) {
       return;
     }
-    console.log('Enviado:', { nomeP, nifP, portaP, stringIMG });
+
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      try {
+        await updateProfile(userId, {
+          nome: nomeP,
+          nif: nifP,
+          nPorta: portaP,
+          stringIMG: stringIMG
+        });
+        console.log('Perfil atualizado com sucesso');
+      } catch (error) {
+        console.error('Erro ao atualizar o perfil:', error);
+      }
+    } else {
+      console.error('ID de utilizador não encontrado para atualização.');
+    }
   };
+
 
   return (
     <div className="perfil-container">
