@@ -35,4 +35,32 @@
   .post-body img {
     width: 100%; border-radius: 4px; margin-top: 8px;
   }
+
+  .form-input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.75rem;
+    width: 100%;
+  }
+  .input-with-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .input-with-button button {
+    height: 40px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .input-with-button button:hover {
+    background-color: #e0e0e0;
+  }
   

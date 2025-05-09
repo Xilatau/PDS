@@ -3,7 +3,7 @@ import "./StylePC.css"
 import { getClient } from "../../../api/ApiClient.jsx"
 
 export default function IncidCard({ incid }) {
-
+  const [editResponse, setEditResponse] = useState(false);
   const [user, setUser] = useState({})
 
   useEffect(() => {
@@ -35,10 +35,22 @@ export default function IncidCard({ incid }) {
         </div>
       </div>
       <div className="post-body">
-        <p>{incid.response}</p>
-        {incid.foto && (
-          <img src={incid.foto}/>
-        )}
+      {incid.foto && (
+        <img src={incid.foto}/>
+      )}
+      <div className="input-with-button">
+        <input
+              type="text"
+              id="nomeP"
+              value={incid.response}
+              className="form-input"
+              disabled={!editResponse}
+            />
+            <button type="button" onClick={() => setEditResponse(prev => !prev)}>
+              {editResponse ? "🔒" : "🔓"}
+            </button>
+      </div>
+      <p>{incid.response}</p>
       </div>
     </div>
   )
