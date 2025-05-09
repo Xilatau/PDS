@@ -1,36 +1,34 @@
-import { User, CirclePlus } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getContactosPorCondominio } from '../../../api/ApiAddContact'; // ajusta o caminho conforme necessário
 import './Style.css';
 
 function Contact() {
   const navigate = useNavigate();
   const [contactos, setContactos] = useState([]);
+  const condominioID = 1; // substitui pelo ID real
 
   useEffect(() => {
-    const contactosGuardados = JSON.parse(localStorage.getItem('contactos')) || [];
-    setContactos(contactosGuardados);
+    getContactosPorCondominio(condominioID)
+      .then(setContactos)
+      .catch((err) => {
+        console.error('Erro ao obter contactos:', err);
+        alert('Erro ao carregar contactos da API.');
+      });
   }, []);
-
-  const eliminarContacto = (indexParaEliminar) => {
-    const novosContactos = contactos.filter((_, i) => i !== indexParaEliminar);
-    setContactos(novosContactos);
-    localStorage.setItem('contactos', JSON.stringify(novosContactos));
-  };
 
   return (
     <div className="contact-container">
-          {/* Contactos adicionados */}
-          {contactos.length === 0 ? (
-            <p>Nenhum contacto adicionado.</p>
-          ) : (
-            contactos.map((c, index) => (
-              <div key={index} className="contact-item">
-                <p>{c.contacto} - {c.nome}</p>
-              </div>
-            ))       
-          )}
-        </div>
+      {contactos.length === 0 ? (
+        <p>Nenhum contacto adicionado.</p>
+      ) : (
+        contactos.map((c, index) => (
+          <div key={index} className="contact-item">
+            <p>{c.telemovel} - {c.nome}</p>
+          </div>
+        ))
+      )}
+    </div>
   );
 }
 
