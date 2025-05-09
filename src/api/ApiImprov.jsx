@@ -1,50 +1,22 @@
-export async function createClient({nome, nif, contacto, contactoTag, nPorta, password, condominioId}) {
-    try {
-    const response = await fetch('https://localhost:7061/user/novo', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        nome: nome,
-        nif: nif,
-        contacto: contacto,
-        contactoTag: "",
-        nPorta: nPorta,
-        password: password,
-        condominioId: condominioId
-      }),
-    })
-    .then(response => {
-      if (!response.ok) throw new Error("Erro na API");
-      return response.json();
-    })
-    .catch(error => {
-      console.error("Erro ao conectar com a API:", error);
-    });
-  } catch (error) {
-    console.error("Erro ao conectar com a API:", error);
-  }
+export async function createImprov({ assunto, tag, file }) {
+  const utilizadorId = localStorage.getItem("userId");
+  console.log(assunto + ", " + utilizadorId + ", " + tag + ", " + file);
+  const payload = {
+    mensagem: assunto,
+    tag,
+    foto: file,
+    utilizadorId
+  };
+  const res = await fetch("https://localhost:7061/incidencias/nova", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error("Erro na API ao criar incidencia");
+  else alert("Incidencia enviada com sucesso!");
+
+const text = await res.text();
+return text ? JSON.parse(text) : {}; // evita erro se a resposta for vazia
 }
 
-export async function getClient(id) {
-    try {
-      const response = await fetch(`https://localhost:7061/user/${id}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-  
-      if (!response.ok) {
-        throw new Error("Erro na API");
-      }
-  
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Erro ao conectar com a API:", error);
-      throw error; // permite que quem chamar também trate o erro
-    }
-  }
   

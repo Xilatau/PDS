@@ -1,27 +1,48 @@
 import React, { useState } from 'react';
+import { createImprov } from "../../../api/ApiImprov";
+
 import './style.css';
 
 function Pedidos() {
-  const [tipo, setTipo] = useState("");
+  const [tag, setTag] = useState("Incidencia");
   const [assunto, setAssunto] = useState("");
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState("");
+  const [preview, setPreview] = useState(null)
 
   const handleTipoChange = (e) => {
-    setTipo(e.target.value);
+    setTag(e.target.value);
+    console.log(tag);
   };
 
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setFile(file);
-    }
+    const selectedFile = e.target.files[0];
+    if (!selectedFile) return;
+  
+    // Gerar preview
+    if (preview) URL.revokeObjectURL(preview);
+    const url = URL.createObjectURL(selectedFile);
+    setPreview(url);
+  
+    // Converter para Base64
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFile(reader.result); // aqui guardamos o Base64 diretamente no estado
+    };
+    reader.readAsDataURL(selectedFile);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', {tipo, assunto, file});
-    // Here you would typically handle the file upload and form submission
-  };
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        await createImprov({
+          assunto,
+          tag,
+          file
+        });
+      } catch (error) {
+        console.error("Erro ao criar incidencia:", error);
+      }
+    };
 
   return (
     <div className="pedidos-container">
@@ -33,9 +54,9 @@ function Pedidos() {
         <div className="form-group">
           <label>Tipo de Pedido</label>
           <select
-            id="tipo"
-            name="tipo"
-            value={tipo}
+            id="tag"
+            name="tag"
+            value={tag}
             onChange={handleTipoChange}
             className="form-input"
           >
@@ -70,6 +91,14 @@ function Pedidos() {
             <p className="file-info">{file.name}</p>
           )}
         </div>
+        {preview && (
+            <img
+              src={preview}
+              className="preview-image"
+              alt="Pré-visualização"
+              onLoad={() => URL.revokeObjectURL(preview)}
+            />
+          )}
 
         <button type="submit" className="submit-button">Enviar Pedido</button>
       </form>

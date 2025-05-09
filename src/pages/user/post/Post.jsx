@@ -8,21 +8,6 @@ export default function PostModal({ onClose, onSubmit }) {
   const [file, setFile] = useState("")
   const [preview, setPreview] = useState(null)
 
-  /*const handleFileChange = e => {
-    const selectedFile = e.target.files[0]
-    if (!selectedFile) return
-    if (preview) URL.revokeObjectURL(preview)
-    const url = URL.createObjectURL(selectedFile)
-    setFile(selectedFile)
-    setPreview(url)
-  }
-
-  const handleSubmit = e => {
-    e.preventDefault()
-    
-    console.log("Modal a submeter:", { title, message, file })
-    onSubmit({ title, message, file })
-  }*/
 
     const handleFileChange = (e) => {
       const selectedFile = e.target.files[0];
