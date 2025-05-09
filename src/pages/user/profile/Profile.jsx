@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './styleP.css';
-import { fetchUserProfile,updateProfile } from '../../../api/ApiPerfil.jsx';
+import { useNavigate } from 'react-router-dom';
+import { updateProfile } from '../../../api/ApiPerfil.jsx';
+import { getClient } from '../../../api/ApiClient.jsx';
 
 function Perfil() {
   //Variaveis dos campos input
@@ -16,17 +18,20 @@ function Perfil() {
   const [editPorta, setEditPorta] = useState(false);
   const [editImg, setEditImg] = useState(false);
 
-  useEffect(() => {
-		// Suponha que o ID do usuário da sessão seja armazenado no localStorage
-		const userId = localStorage.getItem('userId'); // Obtenha o ID do usuário da sessão
+  const navigate = useNavigate();
+    const [preview, setPreview] = useState(null)
 
+  useEffect(() => {
+		const userId = localStorage.getItem('userId'); // Obtem o ID da sessao
+
+    //Com o ID, pega no perfil, e depois carrega as infos da base de dados nas variaves dos inputs
 		if (userId) {
-		  fetchUserProfile(userId)
+		  getClient(userId)
 			.then(data => {
 			  setNomeP(data.nome);
 			  setNifP(data.nif);
 			  setPortaP(data.nPorta);
-			  setStringIMG(data.stringIMG);
+			  setStringIMG(data.foto);
 			})
 			.catch(error => {
 			  console.error('Failed to load user profile:', error);
@@ -36,16 +41,22 @@ function Perfil() {
 		}
 	  }, []);
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
+    const handleImageChange = (e) => {
+      const selectedFile = e.target.files[0];
+      if (!selectedFile) return;
+    
+      // Gerar preview
+      if (preview) URL.revokeObjectURL(preview);
+      const url = URL.createObjectURL(selectedFile);
+      setPreview(url);
+    
+      // Converter para Base64
       const reader = new FileReader();
       reader.onloadend = () => {
-        setStringIMG(reader.result);
+        setStringIMG(reader.result); // aqui guardamos o Base64 diretamente no estado
       };
-      reader.readAsDataURL(file);
-    }
-  };
+      reader.readAsDataURL(selectedFile);
+    };
 
   
   const handleSubmit = async (e) => {
@@ -58,12 +69,14 @@ function Perfil() {
     if (userId) {
       try {
         await updateProfile(userId, {
-          nome: nomeP,
-          nif: nifP,
-          nPorta: portaP,
-          stringIMG: stringIMG
+          nomeP,
+          nifP,
+          portaP,
+          stringIMG
         });
         console.log('Perfil atualizado com sucesso');
+        alert('Perfil atualizado com sucesso!');
+        navigate('/dashboard');
       } catch (error) {
         console.error('Erro ao atualizar o perfil:', error);
       }
@@ -158,6 +171,16 @@ function Perfil() {
             <button type="button" onClick={() => setEditImg(prev => !prev)}>
               {editImg ? "🔒" : "🔓"}
             </button>
+          </div>
+          <div className="form-group">
+          {preview && (
+            <img
+              src={preview}
+              className="preview-image"
+              alt="Pré-visualização"
+              onLoad={() => URL.revokeObjectURL(preview)}
+            />
+          )}
           </div>
         </div>
 

@@ -10,14 +10,16 @@ export async function fetchUserProfile(userId) {
   }
 }
 
-export async function updateProfile(userId, { nome, nif, nPorta, stringIMG }) {
+export async function updateProfile(userId, { nomeP, nifP, portaP, stringIMG }) {
     const payload = {
-      userId,
-      nome,
-      nif,
-      nPorta,
-      stringIMG
+      id: userId,
+      nome: nomeP,
+      nif: nifP,
+      nPorta: portaP,
+      foto: stringIMG
     };
+
+    console.log(payload);
   
     try {
       const response = await fetch('https://localhost:7061/user/editar', {
@@ -31,9 +33,8 @@ export async function updateProfile(userId, { nome, nif, nPorta, stringIMG }) {
       if (!response.ok) {
         throw new Error('Erro na API ao atualizar perfil');
       }
-  
-      const data = await response.json();
-      return data;
+      const text = await response.text();
+      return text ? JSON.parse(text) : {};
     } catch (error) {
       console.error('Erro ao conectar com a API:', error);
       throw error;
