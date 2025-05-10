@@ -43,3 +43,20 @@ export async function getContactosPorCondominio(condominioID) {
     return [];
   }
 }
+
+/**
+ * Eliminar contacto de emergência 
+ */
+export async function eliminarContactoEmergencia(id) {
+  try {
+    const res = await fetch(`https://localhost:7061/contacto/emergencia/Eliminar/${id}`, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!res.ok) throw new Error("Erro ao eliminar contacto");
+    return true;
+  } catch (err) {
+    console.error("API eliminarContacto erro:", err);
+    return false;
+  }
+}
