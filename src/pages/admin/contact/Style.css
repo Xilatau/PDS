@@ -1,7 +1,4 @@
-
-  
-
-  .input-field {
+ .input-field {
     margin-bottom: 20px;
   }
   
@@ -57,12 +54,17 @@
     border-bottom: 1px solid #ccc;
   }
   
-  .delete-button {
-    background-color: #d9534f;
-    color: white;
-    border: none;
-    padding: 2.5px 5px;
-    margin-left: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+.delete-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-top: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
