@@ -62,7 +62,6 @@ export default function Dashboard() {
     }
   };
   
-
   return (
     <div className="dashboard-container">
       <button className="btn-post" onClick={handleCreateClick}>

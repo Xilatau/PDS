@@ -1,18 +1,45 @@
-.dashboard-content {
-  height: 100vh;
-  display: flex;
+.dashboard{
   justify-content: center;
-  align-items: center;       /* opcional para centrar verticalmente */
   padding: 20px;
   box-sizing: border-box;
-
   /* transição e margem quando a navbar está aberta */
   transition: margin-left 0.3s ease;
   margin-left: 67px;
 }
 
-.dashboard-content h1 {
+.dashboard h1{
   font-size: 24px;
   text-align: center;
 }
 
+.btn-post{
+    border-radius: 5px;
+    background-color: var(--Background-color1);
+    display: flex;
+    margin: 2.5% auto;
+    justify-content: center;
+    padding: 10px 20px;
+    color: white;
+    font-size: medium;
+}
+
+.btn-post:hover {
+opacity: 0.9;
+}
+
+/* Feed de posts */
+.feed {
+margin-top: 24px;
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
+.no-posts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    color: #000;
+    margin-top: 10%;
+}
