@@ -31,7 +31,7 @@ function Contact() {
   };
 
   return (
-    <main>
+    <main className='dashboard-contact'>
       <div className="Add-Contact">
         {contactos.length === 0 ? (
           <p>Nenhum contacto adicionado.</p>

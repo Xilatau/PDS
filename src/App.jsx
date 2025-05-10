@@ -73,7 +73,6 @@ function App() {
                 <HeaderAdmin/>
                 <ContactsAdmin/>
                 <NavbarV/>
-                <Footer/>
               </>
             </PrivateRoute>
           } 
@@ -88,7 +87,6 @@ function App() {
                 <HeaderAdmin/>
                 <AddContacts/>
                 <NavbarV/>
-                <Footer/>
               </>
             </PrivateRoute>
           }

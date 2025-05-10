@@ -85,9 +85,9 @@ function Perfil() {
     }
   };
 
-
   return (
-    <div className="perfil-container">
+    <main className='dashboard'>
+      <div className="perfil-container">
       <h1 className='h1-profile'>Perfil</h1>
       <form onSubmit={handleSubmit} className="perfil-form">
 
@@ -188,6 +188,7 @@ function Perfil() {
         <button type="submit" className="submit-button">Atualizar</button>
       </form>
     </div>
+    </main>
   );
 }
 

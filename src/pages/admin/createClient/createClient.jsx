@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import './createClient.css';
 import { createClient } from '../../../api/ApiClient.jsx';
-import { NfcIcon } from 'lucide-react';
+import './createClient.css';
 
 const OrderRequestPage = () => {
   const [nomeCliente, setnomeCliente]=useState('');
@@ -31,7 +30,6 @@ const OrderRequestPage = () => {
     setpassword('');
   }
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = await getCondoId();
@@ -43,6 +41,7 @@ const OrderRequestPage = () => {
       numPorta,
       idCondominio:user.condominioId
     });
+
     createClient({
       nome: nomeCliente,
       nif: nif,
@@ -57,8 +56,9 @@ const OrderRequestPage = () => {
   };
 
   return (
-    <div className="create-form">
-      <h1>Associar um Cliente a um Condomínio</h1>
+    <main className='dashboard'>
+      <div className="create-form">
+      <h1>Associar um Utilizador</h1>
       
       <form onSubmit={handleSubmit}>
       <div className="form-group">
@@ -117,6 +117,7 @@ const OrderRequestPage = () => {
         <button type="submit" className="button">Enviar Pedido</button>
       </form>
     </div>
+    </main>
   );
 };
 

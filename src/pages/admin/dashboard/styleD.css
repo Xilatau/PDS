@@ -1,7 +1,6 @@
 .dashboard{
   justify-content: center;
   padding: 20px;
-  box-sizing: border-box;
   /* transição e margem quando a navbar está aberta */
   transition: margin-left 0.3s ease;
   margin-left: 67px;
@@ -13,14 +12,14 @@
 }
 
 .btn-post{
-    border-radius: 5px;
-    background-color: var(--Background-color1);
-    display: flex;
-    margin: 2.5% auto;
-    justify-content: center;
-    padding: 10px 20px;
-    color: white;
-    font-size: medium;
+  border-radius: 5px;
+  background-color: var(--Background-color1);
+  display: flex;
+  margin: 2.5% auto;
+  justify-content: center;
+  padding: 10px 20px;
+  color: white;
+  font-size: medium;
 }
 
 .btn-post:hover {
