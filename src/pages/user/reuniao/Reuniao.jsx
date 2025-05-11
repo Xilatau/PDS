@@ -1,35 +1,52 @@
 import React, { useState } from "react";
 import "./Style.css";
+import { criarPedidoReuniao } from "../../../api/ApiReuniao";
 
 export default function PostModal({ onClose }) {
   const [title, setTitle] = useState("");
+  const [time, setTime] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const novoPost = {
-      title,
-      message
+    const novoPedido = {
+      data: title,
+      hora: time,
+      motivo: message
     };
 
-    const postsGuardados = JSON.parse(localStorage.getItem("Reuniao")) || [];
-    localStorage.setItem("Reuniao", JSON.stringify([novoPost, ...postsGuardados]));
+    const sucesso = await criarPedidoReuniao(novoPedido);
 
-    onClose();
+    if (sucesso) {
+      alert("Pedido de reunião enviado com sucesso!");
+      onClose();
+    } else {
+      alert("Erro ao enviar pedido.");
+    }
   };
 
   return (
     <div className="modal-backdrop">
       <div className="modal">
-        <h2>Pedido Reunião</h2>
+        <h2>Pedir Reunião</h2>
         <form className="form-post" onSubmit={handleSubmit}>
+          
           <label className="label-title">
             Data da reunião:
             <input
               type="date"
               value={title}
               onChange={e => setTitle(e.target.value)}
+              required
+            />
+          </label>
+
+          <label className="label-time">
+            <input
+              type="time"
+              value={time}
+              onChange={e => setTime(e.target.value)}
               required
             />
           </label>
@@ -45,12 +62,8 @@ export default function PostModal({ onClose }) {
           </label>
 
           <div className="modal-actions">
-            <button type="button" onClick={onClose}>
-              Cancelar
-            </button>
-            <button type="submit" className="primary">
-              Enviar
-            </button>
+            <button type="button" onClick={onClose}>Cancelar</button>
+            <button type="submit" className="primary">Enviar</button>
           </div>
         </form>
       </div>
