@@ -106,7 +106,7 @@ function App() {
             </>
            </PrivateRoute>
        }
-         
+        />         
         {/*Improvemnt & Incidences*/}
         <Route
           path="/improvement-incidencesAdmin"
@@ -121,7 +121,6 @@ function App() {
             </PrivateRoute>
           }
         />
-
         {/*Profile*/}
         <Route
           path="/profileAdmin"
