@@ -17,6 +17,7 @@ import AddContacts from "./pages/admin/addContacts/AddContacts"
 import ContactsAdmin from "./pages/admin/contact/ContactsAdmin"
 import CreateClient from "./pages/admin/createClient/createClient"
 import ImprovIncidAdmin from "./pages/admin/improvIncid/ImprovIncid"
+import PedidosReuniao from "./pages/admin/pedidosReuniao/PedidosReuniao"
 
 //Paginas Cliente
 import HeaderClient from "./elements/client/HeaderCliente"
@@ -92,6 +93,20 @@ function App() {
           }
         />
 
+         {/*Pedido de Reunião*/}
+       <Route
+         path="/PedidosReuniao"
+         element={
+           <PrivateRoute>
+             <>
+               <HeaderAdmin/>
+               <PedidosReuniao/>
+               <NavbarV/>
+               <Footer/>
+            </>
+           </PrivateRoute>
+       }
+         
         {/*Improvemnt & Incidences*/}
         <Route
           path="/improvement-incidencesAdmin"
