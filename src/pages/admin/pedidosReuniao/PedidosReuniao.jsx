@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Style.css";
-import { getPedidosReuniao } from "../../../Api/ApiReuniao";
+import { getPedidosReuniao } from "../../../api/ApiReuniao";
 
 export default function ListaPedidos() {
   const [pedidos, setPedidos] = useState([]);
