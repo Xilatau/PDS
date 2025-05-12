@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Style.css";
-import { getPedidosReuniao } from "../../../api/ApiReuniao";
+import { getPedidosReuniao, aprovarPedidoReuniao, rejeitarPedidoReuniao } from "../../../api/ApiReuniao";
 
 export default function ListaPedidos() {
   const [pedidos, setPedidos] = useState([]);
@@ -11,8 +11,17 @@ export default function ListaPedidos() {
 
   const carregarPedidos = async () => {
     const data = await getPedidosReuniao();
-    console.log("Pedidos de reunião recebidos:", data); 
     setPedidos(data);
+  };
+
+  const aprovarPedido = async (id) => {
+    const data = await aprovarPedidoReuniao(id);
+    carregarPedidos();
+  };
+
+  const rejeitarPedido = async (id) => {
+    const data = await rejeitarPedidoReuniao(id);
+    carregarPedidos();
   };
 
   return (
@@ -32,8 +41,8 @@ export default function ListaPedidos() {
                 <strong>Hora:</strong> {hora} <br />
                 <strong>Motivo:</strong> {pedido.motivo}
                 <div className="botoes">
-                  <button className="Aprovar">Aprovar</button>
-                  <button className="Rejeitar">Rejeitar</button>
+                  <button className="Aprovar" onClick={() => aprovarPedido(pedido.id)}>Aprovar</button>
+                  <button className="Rejeitar" onClick={() => rejeitarPedido(pedido.id)}>Rejeitar</button>
                 </div>
               </li>
             );

@@ -18,6 +18,42 @@ export async function criarPedidoReuniao(pedido) {
   }
 }
 
+export async function aprovarPedidoReuniao(id) {
+  try {
+    const response = await fetch(`https://localhost:7061/reuniao/aprovar/pedido/${id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) throw new Error("Erro ao aprovar pedido de reunião");
+
+    return true;
+  } catch (err) {
+    console.error("API aprovarPedidoReuniao erro:", err);
+    return false;
+  }
+}
+
+export async function rejeitarPedidoReuniao(id) {
+  try {
+    const response = await fetch(`https://localhost:7061/reuniao/rejeita/pedido/${id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) throw new Error("Erro ao rejeitar pedido de reunião");
+
+    return true;
+  } catch (err) {
+    console.error("API rejeitarPedidoReuniao erro:", err);
+    return false;
+  }
+}
+
 /* Lista de reuniões */
 export async function getPedidosReuniao() {
   try {
