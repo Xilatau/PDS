@@ -13,7 +13,8 @@ export default function PostModal({ onClose }) {
     const novoPedido = {
       data: title,
       hora: time,
-      motivo: message
+      motivo: message,
+      utilizadorId: localStorage.getItem("userId")
     };
 
     const sucesso = await criarPedidoReuniao(novoPedido);
