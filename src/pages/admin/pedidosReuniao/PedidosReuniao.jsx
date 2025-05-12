@@ -22,17 +22,22 @@ export default function ListaPedidos() {
         <p>Não há pedidos de reunião.</p>
       ) : (
         <ul className="Pedidos">
-          {pedidos.map((pedido, index) => (
-            <li key={index}>
-              <strong>Data:</strong> {pedido.data} <br />
-              <strong>Hora:</strong> {pedido.hora} <br />
-              <strong>Motivo:</strong> {pedido.motivo}
-              <div className="botoes">
-                <button className="Aprovar">Aprovar</button>
-                <button className="Rejeitar">Rejeitar</button>
-              </div>
-            </li>
-          ))}
+          {pedidos.map((pedido, index) => {
+            const [data, horaCompleta] = pedido.horario.split("T");
+            const hora = horaCompleta.slice(0, 5);
+
+            return (
+              <li key={index}>
+                <strong>Data:</strong> {data} <br />
+                <strong>Hora:</strong> {hora} <br />
+                <strong>Motivo:</strong> {pedido.motivo}
+                <div className="botoes">
+                  <button className="Aprovar">Aprovar</button>
+                  <button className="Rejeitar">Rejeitar</button>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>
