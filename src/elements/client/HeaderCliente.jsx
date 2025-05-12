@@ -22,6 +22,7 @@ function HeaderClient(){
                             <li><Link to="/improvement-incidences">Incidencias/Melhorias</Link></li>
                             <li><Link to="/profile">Perfil</Link></li>
                             <li><Link to="/contacts">Contactos</Link></li>
+                            <li><Link to="/reuniao">Reunião</Link></li>
                         </ul>
                     </li>
                     <li className="logout"> <button className="logout-btn" onClick={handleLogout}>Logout</button></li>
