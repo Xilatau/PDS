@@ -24,11 +24,13 @@ export default function ListaPedidos() {
   const aprovarPedido = async (id) => {
     const data = await aprovarPedidoReuniao(id);
     carregarPedidos();
+    carregarReunioes();
   };
 
   const rejeitarPedido = async (id) => {
     const data = await rejeitarPedidoReuniao(id);
     carregarPedidos();
+    carregarReunioes();
   };
 
   return (
