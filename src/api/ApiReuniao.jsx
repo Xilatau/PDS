@@ -67,3 +67,16 @@ export async function getPedidosReuniao() {
   }
 }
 
+export async function getReunioes() {
+  try {
+    const res = await fetch('https://localhost:7061/reuniao/lista/prox');
+    if (!res.ok) throw new Error("Erro ao obter pedidos de reunião");
+    const data = await res.json();
+    return data.$values ?? data ?? [];
+  } catch (err) {
+    console.error("API getReunioes erro:", err);
+    return [];
+  }
+}
+
+
