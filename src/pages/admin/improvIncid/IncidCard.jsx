@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import "./StylePC.css"
 import { getClient } from "../../../api/ApiClient.jsx"
+import { responseImprov } from "../../../api/ApiImprov.jsx"
 
 export default function IncidCard({ incid }) {
   const [editResponse, setEditResponse] = useState(false);
   const [user, setUser] = useState({})
+  const [resposta, setResposta] = useState("");
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const data = await getClient(incid.userId);
         setUser(data);
+        setResposta(incid.response);
       } catch (err) {
         console.error("Erro ao buscar utilizador:", err);
       }
@@ -18,6 +21,11 @@ export default function IncidCard({ incid }) {
 
     fetchUser();
   }, [incid.userId]);
+
+
+  const sendResponse = () => {
+    responseImprov({ id: incid.id, response: resposta });
+  }
 
   return (
     <div className="post-card">
@@ -42,15 +50,18 @@ export default function IncidCard({ incid }) {
         <input
               type="text"
               id="nomeP"
-              value={incid.response}
+              value={resposta}
               className="form-input"
               disabled={!editResponse}
+              onChange={(e) => setResposta(e.target.value)}
             />
             <button type="button" onClick={() => setEditResponse(prev => !prev)}>
               {editResponse ? "🔒" : "🔓"}
             </button>
       </div>
-      <p>{incid.response}</p>
+      <button className="btn-post" onClick={sendResponse}>
+           Enviar Resposta
+         </button>
       </div>
     </div>
   )

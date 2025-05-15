@@ -38,4 +38,17 @@ export async function getImprov() {
   }
 }
 
+export async function responseImprov({ id, response }) {
+  const utilizadorId = localStorage.getItem("userId");
+  const res = await fetch(`https://localhost:7061/incidencias/resposta/${id}/${utilizadorId}?resposta=${response}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" }
+  });
+  if (!res.ok) throw new Error("Erro na API ao criar resposta da incidencia");
+  else alert("Resposta enviada com sucesso!");
+
+const text = await res.text();
+return text ? JSON.parse(text) : {}; // evita erro se a resposta for vazia
+}
+
   
