@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./Style.css";
 import { criarPedidoReuniao } from "../../../api/ApiReuniao";
+import { useNavigate } from "react-router-dom";
 
 export default function PostModal({ onClose }) {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [time, setTime] = useState("");
   const [message, setMessage] = useState("");
@@ -30,7 +32,7 @@ export default function PostModal({ onClose }) {
   return (
     <div className="modal-backdrop">
       <div className="modal">
-        <h2>Pedido de Reunião</h2>
+        <h2>Pedir Reunião</h2>
         <form className="form-post" onSubmit={handleSubmit}>
           
           <label className="label-title">
@@ -43,8 +45,7 @@ export default function PostModal({ onClose }) {
             />
           </label>
 
-          <label className="label-title">
-            Hora da reunião:
+          <label className="label-time">
             <input
               type="time"
               value={time}
@@ -69,6 +70,7 @@ export default function PostModal({ onClose }) {
           </div>
         </form>
       </div>
+      <button className="v" onClick={() => navigate('/MinhasReunioes')}>Ver Pedidos</button>
     </div>
   );
 }
