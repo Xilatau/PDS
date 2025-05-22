@@ -79,4 +79,15 @@ export async function getReunioes() {
   }
 }
 
-
+// Reuniões agendadas 
+export async function getMinhasReunioes() {
+  try {
+    const res = await fetch('https://localhost:7061/reuniao/lista/prox');
+    if (!res.ok) throw new Error("Erro ao obter reuniões agendadas");
+    const data = await res.json();
+    return data.$values ?? data ?? [];
+  } catch (err) {
+    console.error("API getMinhasReunioes erro:", err);
+    return [];
+  }
+}
