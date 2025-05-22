@@ -31,10 +31,10 @@ export default function VerticalNavbar() {
             <nav>
               <ul>
                 <li><Link to="/dashboardAdmin">Dashboard</Link></li>
-                <li><Link to="/createClient">Criar Cliente</Link></li>
-                <li><Link to="/improvement-incidencesAdmin">Improvement/Incidences</Link></li>
-                 <li><Link to="/pedidosReuniao">Pedido Reunião</Link></li>
-                <li><Link to="/ContactsAdmin">Contactos</Link></li>
+                <li><Link to="/createClient">Adicionar Condómino</Link></li>
+                <li><Link to="/improvement-incidencesAdmin">Incidências/Melhorias</Link></li>
+                 <li><Link to="/pedidosReuniao">Pedidos de Reunião</Link></li>
+                <li><Link to="/ContactsAdmin">Contactos de Emergência</Link></li>
                 <li><Link to="/profileAdmin">Perfil</Link></li>
                 <li><button className='logout-btn' onClick={handleLogout}>Logout</button></li>
               </ul>

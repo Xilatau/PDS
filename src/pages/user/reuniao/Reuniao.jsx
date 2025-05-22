@@ -30,7 +30,7 @@ export default function PostModal({ onClose }) {
   return (
     <div className="modal-backdrop">
       <div className="modal">
-        <h2>Pedir Reunião</h2>
+        <h2>Pedido de Reunião</h2>
         <form className="form-post" onSubmit={handleSubmit}>
           
           <label className="label-title">
@@ -43,7 +43,8 @@ export default function PostModal({ onClose }) {
             />
           </label>
 
-          <label className="label-time">
+          <label className="label-title">
+            Hora da reunião:
             <input
               type="time"
               value={time}
