@@ -23,7 +23,7 @@ export default function PostModal({ onClose }) {
 
     if (sucesso) {
       alert("Pedido de reunião enviado com sucesso!");
-      onClose();
+      navigate('/MinhasReunioes');
     } else {
       alert("Erro ao enviar pedido.");
     }
@@ -45,7 +45,8 @@ export default function PostModal({ onClose }) {
             />
           </label>
 
-          <label className="label-time">
+          <label className="label-title">
+            Hora da reunião:
             <input
               type="time"
               value={time}
