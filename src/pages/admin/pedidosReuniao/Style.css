@@ -50,7 +50,9 @@ p{
   background-color: green;
   border: none;
   color:white;
-   cursor: pointer;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
 }
 
 .Rejeitar{
@@ -58,4 +60,6 @@ p{
   border: none;
   color:white;
    cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
 }
