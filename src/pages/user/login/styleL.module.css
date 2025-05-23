@@ -11,9 +11,8 @@
   margin-top: 2%;
 }
 
-.login{
-  container: center;
-  margin: 5% auto 0;
+.login {
+  margin: 4% auto 2%; /* Pequeno espaço em cima e centralização horizontal */
   width: 40%;
   border: 2px solid black;
   box-shadow: 8px 10px 10px rgba(193, 215, 212, 0.2);
@@ -21,6 +20,7 @@
   background-color: rgb(193, 215, 212);
   color: #000;
   padding: 2% 3%;
+  flex-shrink: 0; /* evita que a box encolha */
 }
 
 .loginp{
@@ -65,12 +65,15 @@ form p{
 }
 
 .footer {
-  margin-top: auto; /* Empurra o rodapé para o final da página */
+  margin: auto auto 0;
   text-align: center;
   width: 100%;
-  padding: 1.5% 0;
+  padding: 0.5% 0 0;
+  font-size: 15px;
+  line-height: 0;
 }
 
-.footer hr{
-  margin-bottom: 1%;
+.footer hr {
+  margin: 0.5% auto;
+  width: 90%;
 }
