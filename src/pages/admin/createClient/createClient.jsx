@@ -6,7 +6,7 @@ const OrderRequestPage = () => {
   const [nomeCliente, setnomeCliente]=useState('');
   const [emailCliente, setemailCLiente]=useState('');
   const [numPorta, setnumPorta]=useState('');
-  const [nif, setnif]=useState(0);
+  const [nif, setnif]=useState('');
   const [password, setpassword]=useState('');
 
   const getCondoId = async () => {
