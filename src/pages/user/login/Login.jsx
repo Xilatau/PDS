@@ -40,7 +40,7 @@ export default function Login() {
         localStorage.setItem('admin', JSON.stringify(data.admin));
         if(data.admin){
           console.log("admin");
-          navigate('/dashboard'); // Redireciona para a página de dashboard após o login bem-sucedido
+          navigate('/dashboardAdmin'); // Redireciona para a página de dashboard após o login bem-sucedido
         }else{
           console.log("user");
           navigate('/dashboard'); // Redireciona para a página de dashboard após o login bem-sucedido
@@ -57,9 +57,12 @@ export default function Login() {
         <h1>CondoConnect</h1>
       </div>
       <div className={style.login}>
-        <h2>Login</h2>
-        <p className={style.loginp}>Faça parte da nossa Comunidade!</p>
 
+        <div className={style.loginboxtext}>
+          <h2>Login</h2>
+          <p className={style.loginp}>Faça parte da nossa Comunidade!</p>
+        </div>
+        
         <form className={style.form} onSubmit={handleLogin}>
           <input
             type="text"
