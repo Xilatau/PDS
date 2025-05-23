@@ -8,7 +8,7 @@ import Footer from "./elements/Footer"
 import ImprovIncid from "./pages/user/improvIncid/ImprovIncid"
 import Contacts from "./pages/user/contact/Contact"
 import Reuniao from "./pages/user/reuniao/Reuniao"
-import Dashboard from "./pages/user/dashboard/Dashboard"
+
 
 //Paginas Admin
 import HeaderAdmin from "./elements/admin/HeaderAdmin"
@@ -18,9 +18,11 @@ import ContactsAdmin from "./pages/admin/contact/ContactsAdmin"
 import CreateClient from "./pages/admin/createClient/createClient"
 import ImprovIncidAdmin from "./pages/admin/improvIncid/ImprovIncid"
 import PedidosReuniao from "./pages/admin/pedidosReuniao/PedidosReuniao"
+import DashboardAdmin from "./pages/admin/dashboard/DashboardAdmin"
 
 //Paginas Cliente
 import HeaderClient from "./elements/client/HeaderCliente"
+import Dashboard from "./pages/user/dashboard/Dashboard"
 
 import Perfil from "./pages/user/profile/Profile"
 import MinhasReunioes from "./pages/user/reuniao/MinhasReunioes"
@@ -38,12 +40,12 @@ function App() {
         {/*Admin*/}
         {/*Dashboard*/}
         <Route
-          path="/dashboardadmin"
+          path="/dashboardAdmin"
           element={
             <PrivateRoute>
               <>
                 <HeaderAdmin/>
-                <Dashboard/>
+                <DashboardAdmin/>
                 <NavbarV/>
                 <Footer/>
               </>
