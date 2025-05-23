@@ -6,7 +6,7 @@ const OrderRequestPage = () => {
   const [nomeCliente, setnomeCliente]=useState('');
   const [emailCliente, setemailCLiente]=useState('');
   const [numPorta, setnumPorta]=useState('');
-  const [nif, setnif]=useState(0);
+  const [nif, setnif]=useState('');
   const [password, setpassword]=useState('');
 
   const getCondoId = async () => {
@@ -26,7 +26,7 @@ const OrderRequestPage = () => {
     setnomeCliente('');
     setemailCLiente('');
     setnumPorta('');
-    setnif(0);
+    setnif('');
     setpassword('');
   }
 
@@ -58,11 +58,11 @@ const OrderRequestPage = () => {
   return (
     <main className='dashboard'>
       <div className="create-form">
-      <h1>Associar um Utilizador</h1>
+      <h1>Criar Condómino</h1>
       
       <form onSubmit={handleSubmit}>
       <div className="form-group">
-          <label htmlFor="nomeCliente">Nome do Cliente</label>
+          <label htmlFor="nomeCliente">Nome do Condómino</label>
           <input 
             type="text" 
             id="nomeCliente" 
@@ -84,7 +84,7 @@ const OrderRequestPage = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="emailCliente">Contacto Cliente</label>
+          <label htmlFor="emailCliente">Contacto Condómino</label>
           <input 
             type="text" 
             id="emailCliente" 
@@ -114,7 +114,7 @@ const OrderRequestPage = () => {
             required
           />
         </div>
-        <button type="submit" className="button">Enviar Pedido</button>
+        <button type="submit" className="button">Criar Condómino</button>
       </form>
     </div>
     </main>
