@@ -40,7 +40,7 @@ export default function Login() {
         localStorage.setItem('admin', JSON.stringify(data.admin));
         if(data.admin){
           console.log("admin");
-          navigate('/dashboardAdmin'); // Redireciona para a página de dashboard após o login bem-sucedido
+          navigate('/dashboard'); // Redireciona para a página de dashboard após o login bem-sucedido
         }else{
           console.log("user");
           navigate('/dashboard'); // Redireciona para a página de dashboard após o login bem-sucedido

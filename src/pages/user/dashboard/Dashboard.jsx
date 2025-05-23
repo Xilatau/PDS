@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useAuth } from "../../../Authentication"
-import PostModal from "../../user/post/Post"
-import PostCard from "../../user/post/PostCard"
+import PostModal from "../post/Post"
+import PostCard from "../post/PostCard"
 
 import { getPosts, createPost } from "../../../api/ApiPost"
 import "./StyleD.css"
@@ -29,6 +29,7 @@ export default function Dashboard() {
   }, [])
 
   // 2)API - Criar post
+
   const handleCreateClick = () => setShowModal(true)
 
   const handleSubmit = async ({ title, message, imageBase64 }) => {
@@ -40,7 +41,7 @@ export default function Dashboard() {
         message,
         file: imageBase64
       });
-
+  
       // Recarrega os posts
       const feed = await getPosts();
       const mapped = feed.map(p => ({
@@ -52,33 +53,31 @@ export default function Dashboard() {
         userName: p.utilizadorId
       }));
       setPosts(mapped);
-
+  
       // Fecha o modal
       setShowModal(false);
     } catch (error) {
       console.error("Erro ao criar post:", error);
     }
   };
-
+  
   return (
-    <main className="dashboard">
-   <div className="dashboard-content">
-         <button className="btn-post" onClick={handleCreateClick}>
-           Criar Post
-         </button>
-    
-         {showModal && (
-           <PostModal onClose={() => setShowModal(false)} onSubmit={handleSubmit} />
-         )}
-   
-         <div className="feed">
-           {posts.length === 0 ? (
-             <p className="no-posts">Ainda não há posts.</p>
-           ) : (
-             posts.map(post => <PostCard key={post.id} post={post} />)
-           )}
-         </div>
-       </div>
-  </main>
-  );
+    <div className="dashboard-container">
+      <button className="btn-post" onClick={handleCreateClick}>
+        Criar Post
+      </button>
+
+      {showModal && (
+        <PostModal onClose={() => setShowModal(false)} onSubmit={handleSubmit} />
+      )}
+
+      <div className="feed">
+        {posts.length === 0 ? (
+          <p className="no-posts">Ainda não há posts.</p>
+        ) : (
+          posts.map(post => <PostCard key={post.id} post={post} />)
+        )}
+      </div>
+    </div>
+  )
 }

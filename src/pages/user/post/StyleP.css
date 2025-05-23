@@ -42,8 +42,7 @@
 }
 
 .preview-image{
-    max-height: 30%; 
-    max-width: 30%;  
+    width: 50% ;  
     display: flex;
     margin: 5% auto;
     border-radius: 5px;

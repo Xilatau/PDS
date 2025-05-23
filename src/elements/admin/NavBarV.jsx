@@ -30,7 +30,7 @@ export default function VerticalNavbar() {
             <h2>CondoConnect</h2>
             <nav>
               <ul>
-                <li><Link to="/dashboardAdmin">Dashboard</Link></li>
+                <li><Link to="/dashboard">Dashboard</Link></li>
                 <li><Link to="/createClient">Adicionar Condómino</Link></li>
                 <li><Link to="/improvement-incidencesAdmin">Incidências/Melhorias</Link></li>
                  <li><Link to="/pedidosReuniao">Pedidos de Reunião</Link></li>
