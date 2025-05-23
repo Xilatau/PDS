@@ -49,9 +49,13 @@ export default function ListaPedidos() {
                 <strong>Data:</strong> {data} <br />
                 <strong>Hora:</strong> {hora} <br />
                 <strong>Motivo:</strong> {pedido.motivo}
-                <div className="botoes">
-                  <button className="Aprovar" onClick={() => aprovarPedido(pedido.id)}>Aprovar</button>
-                  <button className="Rejeitar" onClick={() => rejeitarPedido(pedido.id)}>Rejeitar</button>
+                <div className="modal-actions">
+                  <button className="btn-cancel" onClick={() => rejeitarPedido(pedido.id)}>
+                    Rejeitar
+                  </button>
+                  <button onClick={() => aprovarPedido(pedido.id)} className="primary">
+                    Aprovar
+                  </button>
                 </div>
               </li>
             );
