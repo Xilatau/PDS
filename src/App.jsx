@@ -38,7 +38,7 @@ function App() {
         {/*Admin*/}
         {/*Dashboard*/}
         <Route
-          path="/dashboard"
+          path="/dashboardadmin"
           element={
             <PrivateRoute>
               <>
@@ -53,7 +53,7 @@ function App() {
         
           {/*CreateClient*/}
         <Route
-          path="/createClient"
+          path="/createClientAdmin"
           element={
             <PrivateRoute>
               <>
@@ -165,7 +165,7 @@ function App() {
           }
         />
 
-          {/*improvement & incidences*/}
+        {/*improvement & incidences*/}
         <Route
           path="/improvement-incidences"
           element={
@@ -191,17 +191,17 @@ function App() {
           }
         />
 
-         {/*Reunião*/}
-         <Route
-          path="/reuniao"
-          element={
-            <PrivateRoute>
-              <>
-                <HeaderClient/>
-                <Reuniao/>
-              </>
-            </PrivateRoute>
-          }
+        {/*Reunião*/}
+        <Route
+        path="/reuniao"
+        element={
+          <PrivateRoute>
+            <>
+              <HeaderClient/>
+              <Reuniao/>
+            </>
+          </PrivateRoute>
+        }
         />
 
         <Route
