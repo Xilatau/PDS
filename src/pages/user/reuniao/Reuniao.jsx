@@ -66,7 +66,7 @@ export default function PostModal({ onClose }) {
           </label>
 
           <div className="modal-actions">
-            <button type="button" onClick={onClose}>Cancelar</button>
+            <button  className='cancel' type="button" onClick={onClose}>Cancelar</button>
             <button type="submit" className="primary">Enviar</button>
           </div>
         </form>

@@ -3,6 +3,12 @@
     margin: 3% auto;
 }
 
+.modal h2{
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
 .form-post{
     margin: 2% auto 2%;
     padding: 2% 4% 5%;
@@ -17,6 +23,7 @@
 }
 
 .label-title input{
+    display: flex;
     width: 75%;
     margin: 1% 2% 1.5%;
     padding: 0.7%;
@@ -24,14 +31,11 @@
     border: 1px solid #000;
 }
 .label-message div{
+    display: flex;
     margin-left: 4%;
 }
 
-
 .label-message textarea{
-    width: 75%;
-    padding: 0.7%;
-    margin: 1% 13% 3%;
     border-radius: 5px;
     border: 1px solid #000;
 }
@@ -55,4 +59,4 @@
   margin: 20px auto 0;
   display: block; 
   text-align: center;
-}    
+}
