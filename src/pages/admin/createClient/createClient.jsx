@@ -26,7 +26,7 @@ const OrderRequestPage = () => {
     setnomeCliente('');
     setemailCLiente('');
     setnumPorta('');
-    setnif(0);
+    setnif('');
     setpassword('');
   }
 
