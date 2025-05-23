@@ -38,10 +38,11 @@ function Contact() {
         ) : (
           contactos.map((c) => (
             <div key={c.id} className="contact-item">
-              <p>{c.telemovel} - {c.nome}</p>
+              
               <button className="delete-button" onClick={() => handleDelete(c.id)}>
                 Eliminar
               </button>
+              <span className='contact-info'>{c.telemovel} - {c.nome}</span>
             </div>
           ))
         )}
