@@ -45,3 +45,14 @@
     text-align: left;
     display: flex;
 }
+
+.v{
+   background-color: black;
+  color: white;
+  border-radius: 10%;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 20px auto 0;
+  display: block; 
+  text-align: center;
+}    

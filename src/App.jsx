@@ -23,6 +23,7 @@ import PedidosReuniao from "./pages/admin/pedidosReuniao/PedidosReuniao"
 import HeaderClient from "./elements/client/HeaderCliente"
 import DashboardClient from "./pages/client/dashboard/DashboardClient"
 import Perfil from "./pages/user/profile/Profile"
+import MinhasReunioes from "./pages/user/reuniao/MinhasReunioes"
 
 function App() {
   return (
@@ -198,6 +199,18 @@ function App() {
               <>
                 <HeaderClient/>
                 <Reuniao/>
+              </>
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/MinhasReunioes"
+          element={
+            <PrivateRoute>
+              <>
+                <HeaderClient/>
+                <MinhasReunioes/>
               </>
             </PrivateRoute>
           }

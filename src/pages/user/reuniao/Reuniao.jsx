@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./Style.css";
 import { criarPedidoReuniao } from "../../../api/ApiReuniao";
+import { useNavigate } from "react-router-dom";
 
 export default function PostModal({ onClose }) {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [time, setTime] = useState("");
   const [message, setMessage] = useState("");
@@ -68,6 +70,7 @@ export default function PostModal({ onClose }) {
           </div>
         </form>
       </div>
+      <button className="v" onClick={() => navigate('/MinhasReunioes')}>Ver Pedidos</button>
     </div>
   );
 }
