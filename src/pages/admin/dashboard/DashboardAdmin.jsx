@@ -7,9 +7,11 @@ import { getPosts, createPost } from "../../../api/ApiPost"
 import "./StyleD.css"
 
 export default function Dashboard() {
-  const { user } = useAuth()
   const [posts, setPosts] = useState([])
   const [showModal, setShowModal] = useState(false)
+  const [activeTab, setActiveTab] = useState("all"); // 'all' ou 'mine'
+
+  const userId = localStorage.getItem("userId")
 
   // 1)API - Obter posts
   useEffect(() => {
@@ -27,13 +29,14 @@ export default function Dashboard() {
     }
     load()
   }, [])
+
 // 2)API - Criar post
   const handleCreateClick = () => setShowModal(true)
 
   const handleSubmit = async ({ title, message, imageBase64 }) => {
     try {
       await createPost({
-        userId: localStorage.getItem("userId"),
+        userId: userId,
         tag: "post",
         title,
         message,
@@ -58,25 +61,39 @@ export default function Dashboard() {
       console.error("Erro ao criar post:", error);
     }
   };
+
+    const filteredPosts = activeTab === "mine" ? 
+    (posts.filter(post => String(post.userName) === userId)) : posts;
+
 return (
-    <main className="dashboard">
-   <div className="dashboard-content">
-         <button className="btn-post" onClick={handleCreateClick}>
-           Criar Post
-         </button>
-    
-         {showModal && (
-           <PostModal onClose={() => setShowModal(false)} onSubmit={handleSubmit} />
-         )}
-   
-         <div className="feed">
-           {posts.length === 0 ? (
-             <p className="no-posts">Ainda não há posts.</p>
-           ) : (
-             posts.map(post => <PostCard key={post.id} post={post} />)
-           )}
-         </div>
-       </div>
-  </main>
-  );
+  <main className="dashboard">
+    <div className="dashboard-content">
+      <div className="dashboard-btt">
+        <button className="btn-post" onClick={handleCreateClick}>
+            Criar Post
+          </button>
+
+          <div className="tab-buttons">
+              <button className={activeTab === "all" ? "active-tab" : ""} onClick={() => setActiveTab("all")}>
+                Todos os Posts</button> 
+              
+              <button className={activeTab === "mine" ? "active-tab" : ""} onClick={() => setActiveTab("mine")}>
+                Meus Posts</button>
+            </div>
+      </div>
+        {showModal && (
+          <PostModal onClose={() => setShowModal(false)} onSubmit={handleSubmit} />
+        )}
+  
+      <div className="feed">
+        {filteredPosts.length === 0 ? (
+          <p className="no-posts">Ainda não há posts.</p>
+        ) : (
+          filteredPosts.map(post => <PostCard key={post.id} post={post} />)
+
+        )}
+      </div>
+    </div>
+   </main>
+ );
 }
