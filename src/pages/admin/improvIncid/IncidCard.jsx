@@ -42,7 +42,7 @@ export default function IncidCard({ incid }) {
       {isExpanded && (
         <div className="post-body">
           {incid.foto && (
-            <img src={incid.foto} className="thumbnail-image" />
+            <img src={incid.foto}/>
           )}
 
           <div className="input-with-button">
