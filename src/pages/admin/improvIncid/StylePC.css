@@ -64,3 +64,15 @@
     background-color: #e0e0e0;
   }
   
+  .toggle-button {
+  background-color: transparent;
+  color:rgb(44, 135, 100);
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.toggle-button:hover {
+  text-decoration: underline;
+}
