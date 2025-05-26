@@ -61,7 +61,6 @@ export default function Dashboard() {
       console.error("Erro ao criar post:", error);
     }
   };
-
     const filteredPosts = activeTab === "mine" ? 
     (posts.filter(post => String(post.userName) === userId)) : posts;
 
