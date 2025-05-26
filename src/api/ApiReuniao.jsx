@@ -54,6 +54,27 @@ export async function rejeitarPedidoReuniao(id) {
   }
 }
 
+
+
+export async function publicarAtaReuniao(id, ata) {
+  try {
+    const response = await fetch(`https://localhost:7061/reuniao/add/ata/${id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ata})
+    });
+
+    if (!response.ok) throw new Error("Erro ao publicar ata de reunião");
+
+    return true;
+  } catch (err) {
+    console.error("API publicarAtaReuniao erro:", err);
+    return false;
+  }
+}
+
 /* Lista de reuniões */
 export async function getPedidosReuniao() {
   try {

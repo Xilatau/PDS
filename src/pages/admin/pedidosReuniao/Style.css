@@ -66,8 +66,14 @@ p{
 .modal-actions{
   display: flex;
   gap: 5px; 
-  justify-content: flex-end; 
-  margin: 0; 
+  justify-content: flex-end !important; 
+  margin: 0 !important; 
+}
+
+.modal-actions.ata{
+  justify-content: flex-start !important; 
+  align-items: center;  
+  gap: 4px; 
 }
 
 .modal-actions button{
@@ -77,6 +83,12 @@ p{
   background-color: #000;
   color: white;
   cursor: pointer;
+}
+
+.modal-actions button.ata{
+  padding: 7px;
+  width: auto;
+  border-radius: 4px;
 }
 
 .modal-actions button:hover{
