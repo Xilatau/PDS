@@ -15,20 +15,21 @@ export default function Dashboard() {
 
   // 1)API - Obter posts
   useEffect(() => {
-    async function load() {
-      const feed = await getPosts()
-      const mapped = feed.map(p => ({
-        id: p.id,
-        title: p.titulo,
-        message: p.mensagem,
-        imageUrl: p.foto,
-        createdAt: p.createdOn,
-        userName: p.utilizadorId
-      }))
-      setPosts(mapped)
-    }
-    load()
+    loadPosts()
   }, [])
+
+  const loadPosts = async () => {
+    const feed = await getPosts()
+    const mapped = feed.map(p => ({
+      id: p.id,
+      title: p.titulo,
+      message: p.mensagem,
+      imageUrl: p.foto,
+      createdAt: p.createdOn,
+      userName: p.utilizadorId
+    }))
+    setPosts(mapped)
+  }
 
 // 2)API - Criar post
   const handleCreateClick = () => setShowModal(true)
@@ -88,7 +89,7 @@ return (
         {filteredPosts.length === 0 ? (
           <p className="no-posts">Ainda não há posts.</p>
         ) : (
-          filteredPosts.map(post => <PostCard key={post.id} post={post} />)
+          filteredPosts.map(post => <PostCard key={post.id} post={post} onDelete={loadPosts}/>)
 
         )}
       </div>

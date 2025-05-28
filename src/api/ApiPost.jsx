@@ -39,4 +39,11 @@ export async function getPosts() {
   const text = await res.text();
   return text ? JSON.parse(text) : {}; // evita erro se a resposta for vazia
   }
+
+  export async function deletePost(postId) {
+    const res = await fetch(`https://localhost:7061/post/eliminar/${postId}`, {
+      method: "DELETE"
+    });
+    if (!res.ok) throw new Error("Erro na API ao eliminar post");
+  }
   

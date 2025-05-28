@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react"
 import "./StylePC.css"
 import { getClient } from "../../../api/ApiClient.jsx"
+import { deletePost } from "../../../api/ApiPost.jsx"
+import { useNavigate } from 'react-router-dom';
 
-export default function PostCard({ post }) {
+export default function PostCard({ post, onDelete }) {
 
+  const navigate = useNavigate();
   const [user, setUser] = useState({});
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -24,11 +27,16 @@ export default function PostCard({ post }) {
     fetchUser();
   }, [post.userName]);
 
-  const handleDelete = () => {
-    // TODO: Implement delete functionality
-    console.log('Deleting post:', post.id);
-    // You'll want to add your delete logic here
-    // For example: deletePost(post.id).then(() => onDelete(post.id));
+  const handleDelete = async () => {
+    const confirmar = window.confirm("Tem a certeza que quer eliminar?");
+    if (confirmar) {
+      try {
+        await deletePost(post.id);
+        onDelete();
+      } catch (error) {
+        console.error("Erro ao eliminar post:", error);
+      }
+    }
   };
 
   return (
