@@ -43,9 +43,25 @@ export async function updateProfile(userId, { nomeP, nifP, portaP, stringIMG }) 
 
   export async function ValidatePassword(userId, currentPassword) {
     try {
-      const res = await fetch(`https://localhost:7061/user/verifica/password/${userId}/${currentPassword}`);
+      const res = await fetch(`https://localhost:7061/user/verifica/password/${userId}/${currentPassword}`, {
+        method: "GET"
+      });
       if (!res.ok) throw new Error("Erro na API ao verificar password");
       const data = await res.json();
+      return data;
+    } catch (err) {
+      console.error("API ValidatePassword erro:", err);
+      return false;
+    }
+  }
+
+  export async function ChangePassword(userId, newPassword) {
+    try {
+      const res = await fetch(`https://localhost:7061/user/altera/password/${userId}/${newPassword}`, {
+        method: "POST"
+      });
+      if (!res.ok) throw new Error("Erro na API ao alterar password");
+      const data = await res;
       console.log(data);
       return data;
     } catch (err) {

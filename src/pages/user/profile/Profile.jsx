@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './styleP.css';
 import { useNavigate } from 'react-router-dom';
-import { updateProfile, ValidatePassword } from '../../../api/ApiPerfil.jsx';
+import { updateProfile, ValidatePassword, ChangePassword } from '../../../api/ApiPerfil.jsx';
 import { getClient } from '../../../api/ApiClient.jsx';
 
 function Perfil() {
@@ -72,33 +72,53 @@ function Perfil() {
     }));
   };
 
-  const validatePasswords = () => {
+  const validatePasswords = async () => {
     const passwordValid = async () => {
           try {
             const data = await ValidatePassword(localStorage.getItem('userId'), passwordData.currentPassword);
-            console.log(data);
+            return data;
           } catch (err) {
             console.error("Erro ao verificar password:", err);
+            return false;
           }
         };
 
-    if(!passwordValid()) {
+    const isPasswordValid = await passwordValid();
+
+    if (!isPasswordValid) {
       setPasswordError('Palavra-passe atual inválida');
+      cleanPassword();
       return false;
     }else{
       if (passwordData.newPassword !== passwordData.confirmPassword) {
         setPasswordError('As palavras-passe não coincidem');
+        cleanPassword();
         return false;
       }
       if (passwordData.newPassword.length < 6) {
         setPasswordError('A nova palavra-passe deve ter pelo menos 6 caracteres');
+        cleanPassword();
         return false;
       }
+      changePassword();
+      cleanPassword();
       setPasswordError('');
       return true;
     }
+  };
 
-    
+  const changePassword = async () => {
+    try {
+      const data = await ChangePassword(localStorage.getItem('userId'), passwordData.newPassword);
+      alert("Palavra-passe alterada com sucesso!");
+    } catch (err) {
+      console.error("Erro ao alterar password:", err);
+    }
+  };
+
+  const cleanPassword = () => {
+    setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+    setIsChangingPassword(false);
   };
 
   const handlePasswordSubmit = async (e) => {
