@@ -203,7 +203,7 @@ function Perfil() {
             )}
           </div>
 
-          <button type="submit" className="submit-button">Atualizar</button>
+          <button type="submit" className="submit-button-profile">Atualizar</button>
         </form>
       </div>
     </div>
