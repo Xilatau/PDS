@@ -45,7 +45,7 @@ export default function PostModal({ onClose, onSubmit }) {
         </div>
        
         <div className="post-description">
-            <label className="label-message">Motivo da reunião:</label>
+            <label className="label-message">Descrição:</label>
             <textarea rows="7" value={message} onChange={e => setMessage(e.target.value)} required/>
           </div>
           
