@@ -15,7 +15,6 @@ export default function MinhasReunioes() {
   carregar();
 }, []);
 
-
   return (
     <div>
       <h2>As Minhas Reuniões</h2>

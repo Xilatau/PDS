@@ -49,30 +49,32 @@
     border: 1px solid #000;
 }
 
-.modal-actions{
+.butoespost{
     display: flex;
     justify-content: space-between;
     margin: 2% auto 0;   
 }
 
-.modal-actions button{
-    width: 20%;
-    padding: 1%;
+.butoespost button{
+    padding: 1% 2%;
+    border: 2px solid #000;
     border-radius: 5px;
-    border: 1px solid #333;
-    background-color: #333;
-    color: white;
+    background-color: white;
+    color: #000;
     cursor: pointer;
 }
 
-.modal-actions button:hover{
-    transition: 0.3s;
-    color: var(--Background-color1);
-    border: 1px solid var(--Background-color1);
+.butoespost button:hover{
+    background-color: rgba(238, 238, 238, 0.675);
+    transition: ease 0.3;
 }
 
-.modal-actions .btn-cancel:hover{
-    transition: 0.3s;
+.butoespost .btn-submit:hover{
+    color: green;
+    border: 2px solid green;
+}
+
+.butoespost .btn-cancel:hover{
     color: red;
-    border: 1px solid red;
+    border: 2px solid red;
 }

@@ -60,7 +60,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 2%;
+  padding: 2%;
 }
 
 .delete-button {
@@ -75,4 +75,29 @@
 
 .delete-button:hover {
   opacity: 0.8;
+}
+.aba {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10%; 
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ccc;
+  padding: 1% 0 3%;
+}
+
+.button-container {
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
+
+.filtro-container {
+  flex-shrink: 0;
+}
+
+.input-filtro {
+  padding: 0.5rem;
+  border: px solid #ccc;
+  width: 250%; 
+  width: 100%;
 }
