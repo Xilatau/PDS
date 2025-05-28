@@ -9,54 +9,98 @@
     padding: 0;
 }
 
-.form-post{
+.form-reuniao{
     margin: 2% auto 2%;
-    padding: 2% 4% 5%;
-    border: 3px solid #000;
+    padding: 3% 4% 5%;
+    border: 4px solid #000;
     border-radius: 5px;
     background-color: white;
 }
 
-.form-post label{
-    margin-left: 4%;
+.form-reuniao label{
+    margin: 0 auto;
     font-size:large;
 }
 
-.label-title input{
+.input-reuniao{
     display: flex;
     width: 75%;
-    margin: 1% 2% 1.5%;
+    margin: 1% 0 1.5%;
     padding: 0.7%;
     border-radius: 5px;
     border: 1px solid #000;
 }
-.label-message div{
-    display: flex;
-    margin-left: 4%;
+
+.label-message {
+    width: 100%;
+    margin-bottom: 2%;
 }
 
-.label-message textarea{
-    border-radius: 5px;
-    border: 1px solid #000;
+.verpedidos{
+    background-color: black;
+    color: white;
+    border-radius: 10%;
+    cursor: pointer;
+    padding: 1% 2%;
+    margin: 2% auto 0;
+    display: block; 
+    text-align: center;
 }
 
-.label-time input{
-    width: 75%;
-    margin: 1% 2% 1.5%;
+.reuniao-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2%;
+    margin-bottom: 2%;
+}
+
+.reuniao-row label {
+    font-size: large;
+    margin-bottom: 0.5%;
+}
+
+.reuniao-row input {
+    width: 100%;
     padding: 0.7%;
     border-radius: 5px;
     border: 1px solid #000;
-    text-align: left;
-    display: flex;
 }
 
-.v{
-   background-color: black;
-  color: white;
-  border-radius: 10%;
-  cursor: pointer;
-  padding: 10px 20px;
-  margin: 20px auto 0;
-  display: block; 
-  text-align: center;
+.reuniao-description{
+    display: grid;
+}
+
+.reuniao-description textarea{
+    font-size: large;
+}
+
+.modal-buttons-reuniao{
+    margin: 4% 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-buttons-reuniao button{
+    padding: 1% 2%;
+    border: 2px solid #000;
+    border-radius: 5px;
+    background-color: white;
+    color: #000;
+    cursor: pointer;
+}
+
+.modal-buttons-reuniao button:hover{
+    background-color: rgba(238, 238, 238, 0.675);
+    transition: ease 0.3;
+}
+
+.modal-buttons-reuniao .btn-cancel:hover{
+    color: red;
+    border: 2px solid red;
+}
+
+.modal-buttons-reuniao .btn-submit:hover{
+    color: green;
+    border: 2px solid green;
+    
 }
