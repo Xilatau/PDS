@@ -5,8 +5,6 @@ import {AuthProvider} from "./Authentication"
 //Paginas Gerais
 import Login from "./pages/user/login/Login"
 import Footer from "./elements/Footer"
-import ImprovIncid from "./pages/user/improvIncid/ImprovIncid"
-import Reuniao from "./pages/user/reuniao/Reuniao"
 
 
 //Paginas Admin
@@ -19,13 +17,15 @@ import ImprovIncidAdmin from "./pages/admin/improvIncid/ImprovIncid"
 import PedidosReuniao from "./pages/admin/pedidosReuniao/PedidosReuniao"
 import DashboardAdmin from "./pages/admin/dashboard/DashboardAdmin"
 
+
 //Paginas Cliente
 import HeaderClient from "./elements/client/HeaderCliente"
 import Dashboard from "./pages/client/dashboard/Dashboard"
 import Contacts from "./pages/client/contact/Contact"
-
 import Perfil from "./pages/user/profile/Profile"
-import MinhasReunioes from "./pages/user/reuniao/MinhasReunioes"
+import MinhasReunioes from "./pages/client/reuniao/MinhasReunioes"
+import Reuniao from "./pages/client/reuniao/Reuniao"
+import ImprovIncid from "./pages/client/improvIncid/ImprovIncid"
 
 function App() {
   return (

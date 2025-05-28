@@ -59,7 +59,7 @@ export default function IncidCard({ incid }) {
             </button>
           </div>
 
-          <button className="btn-post" onClick={sendResponse}>
+          <button className="btn-answer" onClick={sendResponse}>
             Enviar Resposta
           </button>
         </div>

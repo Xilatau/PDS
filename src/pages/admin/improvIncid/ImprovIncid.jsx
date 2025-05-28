@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { useAuth } from "../../../Authentication"
 import { getImprov } from "../../../api/ApiImprov"
 import IncidCard from "./IncidCard"
 
@@ -26,7 +25,7 @@ export default function Dashboard() {
     }, [])
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard">
       <div className="feed">
         {incids.length === 0 ? (
           <p className="no-posts">Ainda não há incidências.</p>
