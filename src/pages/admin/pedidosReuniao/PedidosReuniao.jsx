@@ -75,7 +75,7 @@ export default function ListaPedidos() {
   };
   
   return (
-    <div>
+    <div className="dashboard">
       <h2>Pedidos de Reunião</h2>
       {pedidos.length == 0 ? (
         <p>Não há pedidos de reunião.</p>
