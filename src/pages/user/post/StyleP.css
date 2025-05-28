@@ -59,8 +59,8 @@
     width: 20%;
     padding: 1%;
     border-radius: 5px;
-    border: 1px solid #000;
-    background-color: #000;
+    border: 1px solid #333;
+    background-color: #333;
     color: white;
     cursor: pointer;
 }

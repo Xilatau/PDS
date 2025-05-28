@@ -86,3 +86,70 @@
 .input-with-button button:hover {
   background-color: #e0e0e0;
 }
+
+/* Password Change Styles */
+.change-password-btn {
+  height: 40px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.change-password-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  margin-top: 0.5rem;
+}
+
+.password-form .form-group {
+  margin-bottom: 0.5rem;
+}
+
+.password-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.password-form input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.modal-actions button{
+  width: 20%;
+  padding: 1%;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+}
+
+.modal-actions button:hover{
+  transition: 0.3s;
+  color: var(--Background-color1);
+  border: 1px solid var(--Background-color1);
+}
+
+.modal-actions .btn-cancel:hover{
+  transition: 0.3s;
+  color: red;
+  border: 1px solid red;
+}

@@ -5,17 +5,23 @@ import { updateProfile } from '../../../api/ApiPerfil.jsx';
 import { getClient } from '../../../api/ApiClient.jsx';
 
 function Perfil() {
-  //Variaveis dos campos input
+  // State variables
   const [nomeP, setNomeP] = useState('');
   const [stringIMG, setStringIMG] = useState('');
-  const [nifP, setNifP] = useState('');
-  const [portaP, setPortaP] = useState();
+  const [teleP, setTeleP] = useState('');
   const [errors, setErrors] = useState({});
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  });
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
+  const [passwordSuccess, setPasswordSuccess] = useState('');
 
-  //Variaveis para butoes lock/unlock
+  // State for lock/unlock buttons
   const [editNome, setEditNome] = useState(false);
-  const [editNif, setEditNif] = useState(false);
-  const [editPorta, setEditPorta] = useState(false);
+  const [editTele, setEditTele] = useState(false);
   const [editImg, setEditImg] = useState(false);
 
   const navigate = useNavigate();
@@ -29,7 +35,7 @@ function Perfil() {
 		  getClient(userId)
 			.then(data => {
 			  setNomeP(data.nome);
-			  setNifP(data.nif);
+			  setTeleP(data.telemovel);
 			  setPortaP(data.nPorta);
 			  setStringIMG(data.foto);
 			})
@@ -59,6 +65,49 @@ function Perfil() {
     };
 
   
+  const handlePasswordChange = (e) => {
+    const { name, value } = e.target;
+    setPasswordData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const validatePasswords = () => {
+    if (passwordData.newPassword !== passwordData.confirmPassword) {
+      setPasswordError('As palavras-passe não coincidem');
+      return false;
+    }
+    if (passwordData.newPassword.length < 6) {
+      setPasswordError('A nova palavra-passe deve ter pelo menos 6 caracteres');
+      return false;
+    }
+    setPasswordError('');
+    return true;
+  };
+
+  const handlePasswordSubmit = async (e) => {
+    e.preventDefault();
+    if (!validatePasswords()) return;
+
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      try {
+        await updateProfile(userId, {
+          currentPassword: passwordData.currentPassword,
+          newPassword: passwordData.newPassword
+        });
+        setPasswordSuccess('Palavra-passe alterada com sucesso!');
+        setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+        setIsChangingPassword(false);
+        setTimeout(() => setPasswordSuccess(''), 3000);
+      } catch (error) {
+        console.error('Erro ao atualizar a palavra-passe:', error);
+        setPasswordError('Erro ao atualizar a palavra-passe. Verifique a palavra-passe atual.');
+      }
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (Object.values(errors).some(error => error)) {
@@ -70,8 +119,7 @@ function Perfil() {
       try {
         await updateProfile(userId, {
           nomeP,
-          nifP,
-          portaP,
+          teleP,
           stringIMG
         });
         console.log('Perfil atualizado com sucesso');
@@ -111,49 +159,90 @@ function Perfil() {
 
         {/* nif */}
         <div className="form-group">
-          <label>NIF</label>
+          <label>Contacto</label>
           <div className="input-with-button">
             <input
-              type="number"
-              id="nifP"
-              value={nifP}
+              type="string"
+              id="teleP"
+              value={teleP}
               className="form-input"
               onChange={(e) => {
                 const value = e.target.value;
-                if (value.length > 9) {
-                  setErrors(prev => ({ ...prev, nifP: 'O NIF não pode ter mais de 9 dígitos' }));
-                } else if (value.length < 9) {
-                  setErrors(prev => ({ ...prev, nifP: 'O NIF não pode ter menos de 9 dígitos' }));
-                } else {
-                  setErrors(prev => ({ ...prev, nifP: '' }));
-                }
-                setNifP(value);
+                setTeleP(value);
               }}
-              disabled={!editNif}
+              disabled={!editTele}
             />
-            <button type="button" onClick={() => setEditNif(prev => !prev)}>
-              {editNif ? "🔒" : "🔓"}
+            <button type="button" onClick={() => setEditTele(prev => !prev)}>
+              {editTele ? "🔒" : "🔓"}
             </button>
           </div>
-          {errors.nifP && <div className="error-message">{errors.nifP}</div>}
+          {errors.teleP && <div className="error-message">{errors.teleP}</div>}
         </div>
 
-        {/* porta */}
+        {/* Password Change Section */}
         <div className="form-group">
-          <label>Nº de Porta</label>
-          <div className="input-with-button">
-            <input
-              type="number"
-              id="portaP"
-              value={portaP}
-              className="form-input"
-              onChange={(e) => setPortaP(e.target.value)}
-              disabled={!editPorta}
-            />
-            <button type="button" onClick={() => setEditPorta(prev => !prev)}>
-              {editPorta ? "🔒" : "🔓"}
+          <label>Palavra-passe</label>
+          {!isChangingPassword ? (
+            <button 
+              type="button" 
+              className="change-password-btn"
+              onClick={() => setIsChangingPassword(true)}
+            >
+              Alterar Palavra-passe
             </button>
-          </div>
+          ) : (
+            <form onSubmit={handlePasswordSubmit} className="password-form">
+              <div className="form-group">
+                <label>Palavra-passe atual</label>
+                <input
+                  type="password"
+                  name="currentPassword"
+                  value={passwordData.currentPassword}
+                  onChange={handlePasswordChange}
+                  className="form-input"
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label>Nova palavra-passe</label>
+                <input
+                  type="password"
+                  name="newPassword"
+                  value={passwordData.newPassword}
+                  onChange={handlePasswordChange}
+                  className="form-input"
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label>Confirmar nova palavra-passe</label>
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  value={passwordData.confirmPassword}
+                  onChange={handlePasswordChange}
+                  className="form-input"
+                  required
+                />
+              </div>
+              {passwordError && <div className="error-message">{passwordError}</div>}
+              {passwordSuccess && <div className="success-message">{passwordSuccess}</div>}
+              <div className="modal-actions">
+                <button type="submit" className="btn">Guardar</button>
+                <button 
+                  type="button" 
+                  className="btn-cancel"
+                  onClick={() => {
+                    setIsChangingPassword(false);
+                    setPasswordError('');
+                    setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+                  }}
+                >
+                  Cancelar
+                </button>
+              </div>
+            </form>
+          )}
         </div>
 
         {/* imagem */}

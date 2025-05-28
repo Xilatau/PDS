@@ -47,4 +47,24 @@ export async function getClient(id) {
       throw error; // permite que quem chamar também trate o erro
     }
   }
+
+  export async function getUserContactos(id) {
+    try {
+      const response = await fetch(`https://localhost:7061/contactos/user/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
   
+      if (!response.ok) {
+        throw new Error("Erro ao buscar contactos do utilizador");
+      }
+  
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Erro ao buscar contactos:", error);
+      throw error;
+    }
+  }
