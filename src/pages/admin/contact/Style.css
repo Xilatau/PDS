@@ -63,7 +63,7 @@
   padding: 2%;
 }
 
-.delete-button {
+.delet-button {
   background-color: #e74c3c;
   color: white;
   border: none;
@@ -73,7 +73,7 @@
   font-size: 14px;
 }
 
-.delete-button:hover {
+.delet-button:hover {
   opacity: 0.8;
 }
 .aba {
