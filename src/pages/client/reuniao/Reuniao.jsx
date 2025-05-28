@@ -30,11 +30,9 @@ export default function PostModal({ onClose }) {
   };
 
   return (
-    <div className="modal-backdrop">
       <div className="modal">
-        <h2>Pedir Reunião</h2>
-        
         <form className="form-reuniao" onSubmit={handleSubmit}> 
+          <h1>Pedir Reunião</h1>
           <div className="reuniao-row">
             <div>
               <label>Data da reunião:</label>
@@ -56,8 +54,6 @@ export default function PostModal({ onClose }) {
             <button className="btn-submit" type="submit">Enviar</button>
           </div>
         </form>
-
-      </div>
       <button className="verpedidos" onClick={() => navigate('/MinhasReunioes')}>Ver Pedidos</button>
     </div>
   );

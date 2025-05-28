@@ -7,16 +7,17 @@ import './Style.css';
 function Contact() {
   const navigate = useNavigate();
   const [contactos, setContactos] = useState([]);
+  const [filtroNome, setFiltroNome] = useState(""); // Estado do filtro por nome
   const condominioID = 1; // Ajusta se necessário
 
-  // Buscar contactos ao carregar
+  // Busca contactos ao carregar
   useEffect(() => {
     carregarContactos();
   }, []);
 
   const carregarContactos = async () => {
     const data = await getContactosPorCondominio(condominioID);
-    console.log("Contactos recebidos:", data); // Debug opcional
+    console.log("Contactos recebidos:", data);
     setContactos(data);
   };
 
@@ -30,30 +31,48 @@ function Contact() {
     }
   };
 
+  // Filtrar contactos pelo nome
+  const contactosFiltrados = contactos.filter((c) =>
+    c.nome.toLowerCase().includes(filtroNome.toLowerCase())
+  );
+
   return (
     <main className='dashboard-contact'>
       <div className="Add-Contact">
-        {contactos.length === 0 ? (
-          <p>Nenhum contacto adicionado.</p>
+
+      <div className='aba'>
+        <div className="button-container">
+           <button className="my-button" onClick={() => navigate('/AddContacts')}>
+           <CirclePlus size={21} />
+           Adicionar novo contacto
+          </button>
+       </div>
+
+     <div className="filtro-container">
+      <input
+      type="text"
+      placeholder="Pesquisar"
+      value={filtroNome}
+      onChange={(e) => setFiltroNome(e.target.value)}
+      className="input-filtro"
+             />
+        </div>
+      </div>
+        
+        {contactosFiltrados.length === 0 ? (
+          <p>Nenhum contacto encontrado.</p>
         ) : (
-          contactos.map((c) => (
+          contactosFiltrados.map((c) => (
             <div key={c.id} className="contact-item">
               <div className='contact-data'>
                 <span className='contact-info'>{c.telemovel} - {c.nome}</span>
-                <button className="delete-button" onClick={() => handleDelete(c.id)}>
+                <button className="delet-button" onClick={() => handleDelete(c.id)}>
                   Eliminar
                 </button>
               </div>
-              
             </div>
           ))
         )}
-
-        {/* Botão para adicionar novo contacto */}
-        <button className="my-button" onClick={() => navigate('/AddContacts')}>
-          <CirclePlus size={21} />
-          Adicionar novo contacto
-        </button>
       </div>
     </main>
   );

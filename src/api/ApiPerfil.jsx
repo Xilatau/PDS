@@ -40,3 +40,16 @@ export async function updateProfile(userId, { nomeP, nifP, portaP, stringIMG }) 
       throw error;
     }
   }
+
+  export async function ValidatePassword(userId, currentPassword) {
+    try {
+      const res = await fetch(`https://localhost:7061/user/verifica/password/${userId}/${currentPassword}`);
+      if (!res.ok) throw new Error("Erro na API ao verificar password");
+      const data = await res.json();
+      console.log(data);
+      return data;
+    } catch (err) {
+      console.error("API ValidatePassword erro:", err);
+      return false;
+    }
+  }

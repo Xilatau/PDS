@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './styleP.css';
 import { useNavigate } from 'react-router-dom';
-import { updateProfile } from '../../../api/ApiPerfil.jsx';
+import { updateProfile, ValidatePassword } from '../../../api/ApiPerfil.jsx';
 import { getClient } from '../../../api/ApiClient.jsx';
 
 function Perfil() {
@@ -36,7 +36,6 @@ function Perfil() {
 			.then(data => {
 			  setNomeP(data.nome);
 			  setTeleP(data.telemovel);
-			  setPortaP(data.nPorta);
 			  setStringIMG(data.foto);
 			})
 			.catch(error => {
@@ -74,16 +73,32 @@ function Perfil() {
   };
 
   const validatePasswords = () => {
-    if (passwordData.newPassword !== passwordData.confirmPassword) {
-      setPasswordError('As palavras-passe não coincidem');
+    const passwordValid = async () => {
+          try {
+            const data = await ValidatePassword(localStorage.getItem('userId'), passwordData.currentPassword);
+            console.log(data);
+          } catch (err) {
+            console.error("Erro ao verificar password:", err);
+          }
+        };
+
+    if(!passwordValid()) {
+      setPasswordError('Palavra-passe atual inválida');
       return false;
+    }else{
+      if (passwordData.newPassword !== passwordData.confirmPassword) {
+        setPasswordError('As palavras-passe não coincidem');
+        return false;
+      }
+      if (passwordData.newPassword.length < 6) {
+        setPasswordError('A nova palavra-passe deve ter pelo menos 6 caracteres');
+        return false;
+      }
+      setPasswordError('');
+      return true;
     }
-    if (passwordData.newPassword.length < 6) {
-      setPasswordError('A nova palavra-passe deve ter pelo menos 6 caracteres');
-      return false;
-    }
-    setPasswordError('');
-    return true;
+
+    
   };
 
   const handlePasswordSubmit = async (e) => {
@@ -134,9 +149,9 @@ function Perfil() {
   };
 
   return (
-    <main className='dashboard'>
+    <div className="dashboard">
       <div className="perfil-container">
-      <h1 className='h1-profile'>Perfil</h1>
+      <h1>Perfil</h1>
       <form onSubmit={handleSubmit} className="perfil-form">
 
         {/* nome */}
@@ -228,7 +243,7 @@ function Perfil() {
               {passwordError && <div className="error-message">{passwordError}</div>}
               {passwordSuccess && <div className="success-message">{passwordSuccess}</div>}
               <div className="modal-actions">
-                <button type="submit" className="btn">Guardar</button>
+                <button type="button" onClick={validatePasswords} className="btn">Guardar</button>
                 <button 
                   type="button" 
                   className="btn-cancel"
@@ -277,7 +292,7 @@ function Perfil() {
         <button type="submit" className="submit-button">Atualizar</button>
       </form>
     </div>
-    </main>
+    </div>
   );
 }
 
