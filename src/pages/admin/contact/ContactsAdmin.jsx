@@ -66,7 +66,7 @@ function Contact() {
             <div key={c.id} className="contact-item">
               <div className='contact-data'>
                 <span className='contact-info'>{c.telemovel} - {c.nome}</span>
-                <button className="delete-button" onClick={() => handleDelete(c.id)}>
+                <button className="delet-button" onClick={() => handleDelete(c.id)}>
                   Eliminar
                 </button>
               </div>
