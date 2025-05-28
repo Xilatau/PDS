@@ -149,9 +149,9 @@ function Perfil() {
   };
 
   return (
-    <main className='dashboard'>
+    <div className="dashboard">
       <div className="perfil-container">
-      <h1 className='h1-profile'>Perfil</h1>
+      <h1>Perfil</h1>
       <form onSubmit={handleSubmit} className="perfil-form">
 
         {/* nome */}
@@ -292,7 +292,7 @@ function Perfil() {
         <button type="submit" className="submit-button">Atualizar</button>
       </form>
     </div>
-    </main>
+    </div>
   );
 }
 
