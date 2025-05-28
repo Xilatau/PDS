@@ -77,11 +77,11 @@ export default function PostModal({ onClose, onSubmit }) {
             />
           )}
 
-          <div className="modal-actions">
+          <div className="butoespost">
             <button className="btn-cancel" type="button" onClick={onClose}>
               Cancelar
             </button>
-            <button type="submit" className="primary">
+            <button type="submit" className="btn-submit">
               Publicar
             </button>
           </div>
