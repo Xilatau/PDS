@@ -35,58 +35,45 @@ export default function PostModal({ onClose, onSubmit }) {
 
   return (
     <div className="modal-backdrop">
-      <div className="modal">
+      <form className="form-post" onSubmit={handleSubmit}>
+        
         <h2>Criar Novo Post</h2>
-        <form className="form-post" onSubmit={handleSubmit}>
-          <label className="label-title">
-            Título:
-            <input
-              type="text"
-              value={title}
-              onChange={e => setTitle(e.target.value)}
-              required
-            />
-          </label>
-
-          <label className="label-message">
-            Descrição:
-            <textarea
-              rows="7"
-              value={message}
-              onChange={e => setMessage(e.target.value)}
-              required
-            />
-          </label>
-
-          <label htmlFor="fileUpload">
-            Imagem (opcional):
-          </label>
-          <input
-            id="fileUpload"
-            className="file-upload"
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-          />
-          {preview && (
-            <img
-              src={preview}
-              className="preview-image"
-              alt="Pré-visualização"
-              onLoad={() => URL.revokeObjectURL(preview)}
-            />
-          )}
-
-          <div className="modal-actions">
-            <button className="btn-cancel" type="button" onClick={onClose}>
-              Cancelar
-            </button>
-            <button type="submit" className="primary">
-              Publicar
-            </button>
+      
+        <div className="post-row">
+          <label>Título</label>
+          <input type="text" value={title} onChange={e => setTitle(e.target.value)}required/>
+        </div>
+       
+        <div className="post-description">
+            <label className="label-message">Motivo da reunião:</label>
+            <textarea rows="7" value={message} onChange={e => setMessage(e.target.value)} required/>
           </div>
-        </form>
-      </div>
+          
+        <input
+          id="fileUpload"
+          className="file-upload"
+          type="file"
+          accept="image/*"
+          onChange={handleFileChange}
+        />
+        {preview && (
+          <img
+            src={preview}
+            className="preview-image"
+            alt="Pré-visualização"
+            onLoad={() => URL.revokeObjectURL(preview)}
+          />
+        )}
+
+        <div className="modal-buttons-post">
+          <button className="btn-cancel" type="button" onClick={onClose}>
+            Cancelar
+          </button>
+          <button type="submit" className="btn-submit">
+            Publicar
+          </button>
+        </div>
+      </form>
     </div>
   )
 }
