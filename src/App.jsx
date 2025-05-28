@@ -6,7 +6,6 @@ import {AuthProvider} from "./Authentication"
 import Login from "./pages/user/login/Login"
 import Footer from "./elements/Footer"
 import ImprovIncid from "./pages/user/improvIncid/ImprovIncid"
-import Contacts from "./pages/user/contact/Contact"
 import Reuniao from "./pages/user/reuniao/Reuniao"
 
 
@@ -22,7 +21,8 @@ import DashboardAdmin from "./pages/admin/dashboard/DashboardAdmin"
 
 //Paginas Cliente
 import HeaderClient from "./elements/client/HeaderCliente"
-import Dashboard from "./pages/user/dashboard/Dashboard"
+import Dashboard from "./pages/client/dashboard/Dashboard"
+import Contacts from "./pages/client/contact/Contact"
 
 import Perfil from "./pages/user/profile/Profile"
 import MinhasReunioes from "./pages/user/reuniao/MinhasReunioes"
