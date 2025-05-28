@@ -10,12 +10,11 @@ export async function fetchUserProfile(userId) {
   }
 }
 
-export async function updateProfile(userId, { nomeP, nifP, portaP, stringIMG }) {
+export async function updateProfile(userId, { nomeP, teleP, stringIMG }) {
     const payload = {
       id: userId,
       nome: nomeP,
-      nif: nifP,
-      nPorta: portaP,
+      telemovel: teleP,
       foto: stringIMG
     };
 
