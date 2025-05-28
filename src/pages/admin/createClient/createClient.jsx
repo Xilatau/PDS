@@ -39,7 +39,7 @@ const OrderRequestPage = () => {
       nomeCliente,
       emailCliente,
       numPorta,
-      idCondominio:user.condominioId
+      idCondominio: user.condominioId
     });
 
     createClient({
@@ -49,7 +49,7 @@ const OrderRequestPage = () => {
       contactoTag: "",
       nPorta: numPorta,
       password: password,
-      condominioId: user.condominioId
+      gestorCondominioId: localStorage.getItem("userId")
     });
     cleanFields();
     alert('Pedido enviado com sucesso!');

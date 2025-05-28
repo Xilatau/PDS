@@ -1,4 +1,4 @@
-export async function createClient({nome, nif, contacto, contactoTag, nPorta, password, condominioId}) {
+export async function createClient({nome, nif, contacto, contactoTag, nPorta, password, gestorCondominioId}) {
     try {
     const response = await fetch('https://localhost:7061/user/novo', {
       method: 'POST',
@@ -12,7 +12,7 @@ export async function createClient({nome, nif, contacto, contactoTag, nPorta, pa
         contactoTag: "",
         nPorta: nPorta,
         password: password,
-        condominioId: condominioId
+        gestorCondominioId: gestorCondominioId
       }),
     })
     .then(response => {
