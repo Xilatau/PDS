@@ -165,8 +165,7 @@ function Perfil() {
             <input type="text" value={teleP} className="form-input" onChange={(e) => setTeleP(e.target.value)} />
           </div>
 
-          <div className="form-group">
-            <label>Palavra-passe</label>
+          <div className="form-group password-label-row">
             {!isChangingPassword ? (
               <button type="button" className="change-password-btn" onClick={() => setIsChangingPassword(true)}>
                 Alterar Palavra-passe
