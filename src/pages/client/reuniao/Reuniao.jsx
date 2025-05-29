@@ -54,7 +54,7 @@ export default function PostModal({ onClose }) {
             <button className="btn-submit" type="submit">Enviar</button>
           </div>
         </form>
-      <button className="verpedidos" onClick={() => navigate('/MinhasReunioes')}>Ver Pedidos</button>
+      <center><button className="verpedidos" onClick={() => navigate('/MinhasReunioes')}>Ver Pedidos</button></center>
     </div>
   );
 }
