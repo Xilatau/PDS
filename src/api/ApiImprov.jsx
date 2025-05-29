@@ -51,4 +51,26 @@ const text = await res.text();
 return text ? JSON.parse(text) : {}; // evita erro se a resposta for vazia
 }
 
-  
+//Respostas incidencias/melhorias
+export async function getIncidenciasPorUtilizador(utilizadorId) {
+  try {
+    const response = await fetch(`https://localhost:7061/incidencias/lista/user/${localStorage.getItem('userId')}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Erro ao buscar incidências do utilizador");
+    }
+
+    const data = await response.json();
+    
+
+    return data?.$values ?? []; 
+  } catch (error) {
+    console.error("Erro ao buscar incidências do utilizador:", error);
+    throw error;
+  }
+}

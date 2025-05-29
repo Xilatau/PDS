@@ -81,3 +81,13 @@ label {
   font-weight: 500;
   color: #333;
 }
+
+.button-ver{
+  padding: 0.75rem;
+  border: 1px solid #000;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin: 1% auto 0;
+  cursor: pointer;
+  width: 50%;
+}

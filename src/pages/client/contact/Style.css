@@ -1,20 +1,5 @@
-.input-field {
-  margin-bottom: 20px;
-}
 
-.input-field p {
-  margin: 0;
-}
-
-.input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  margin-top: 5px;
-  background-color: rgb(196, 196, 196);
-}
-
-.contact-container {
+.lista-contactos {
   background-color: white;
   padding: 1%;
   color: rgb(73, 73, 73);
@@ -29,7 +14,23 @@
   width: 50%;
 }
 
-.contact-item{
+.linha-contacto{
   margin:0;
   padding:0;
+   border-bottom: 1px solid #ccc;
+}
+
+.barra-pesquisa {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+  padding: 2%;;
+}
+
+.campo-pesquisa {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 250px;
 }

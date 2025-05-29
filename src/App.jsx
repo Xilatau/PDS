@@ -26,6 +26,7 @@ import Perfil from "./pages/user/profile/Profile"
 import MinhasReunioes from "./pages/client/reuniao/MinhasReunioes"
 import Reuniao from "./pages/client/reuniao/Reuniao"
 import ImprovIncid from "./pages/client/improvIncid/ImprovIncid"
+import RespostasUtilizador from "./pages/client/improvIncid/RespostasUtilizador"
 
 function App() {
   return (
@@ -218,6 +219,17 @@ function App() {
           }
         />
 
+        <Route
+        path="/RespostasUtilizador"
+        element={
+          <PrivateRoute>
+            <>
+               <HeaderClient/>
+               <RespostasUtilizador/>
+            </>
+          </PrivateRoute>
+        }
+        />
         {/* Fim Cliente*/}
 
       </Routes>

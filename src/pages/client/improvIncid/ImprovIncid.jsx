@@ -104,6 +104,7 @@ function Pedidos() {
 
         <button type="submit" className="submit-button">Enviar Pedido</button>
       </form>
+       <button className='button-ver' onClick={() => navigate('/RespostasUtilizador')}>Ver Respostas</button>
     </div>
   );
 }

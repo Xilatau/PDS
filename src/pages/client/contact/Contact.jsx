@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getContactosPorCondominio } from '../../../api/ApiAddContact'; // ajusta o caminho conforme necessário
+import { getContactosPorCondominio } from '../../../api/ApiAddContact';
 import './Style.css';
 
 function Contact() {
   const navigate = useNavigate();
   const [contactos, setContactos] = useState([]);
-  const condominioID = 1; // substitui pelo ID real
+  const [filtroNome, setFiltroNome] = useState("");
+  const condominioID = 1;
 
   useEffect(() => {
     getContactosPorCondominio(condominioID)
@@ -17,13 +18,27 @@ function Contact() {
       });
   }, []);
 
+  const contactosFiltrados = contactos.filter((c) =>
+    c.nome.toLowerCase().includes(filtroNome.toLowerCase())
+  );
+
   return (
-    <div className="contact-container">
-      {contactos.length === 0 ? (
-        <p>Nenhum contacto adicionado.</p>
+    <div className="lista-contactos">
+      <div className="barra-pesquisa">
+        <input
+          type="text"
+          placeholder="Pesquisar por nome"
+          value={filtroNome}
+          onChange={(e) => setFiltroNome(e.target.value)}
+          className="campo-pesquisa"
+        />
+      </div>
+
+      {contactosFiltrados.length === 0 ? (
+        <p>Nenhum contacto encontrado.</p>
       ) : (
-        contactos.map((c, index) => (
-          <div key={index} className="contact-item">
+        contactosFiltrados.map((c, index) => (
+          <div key={index} className="linha-contacto">
             <p>{c.telemovel} - {c.nome}</p>
           </div>
         ))
@@ -31,4 +46,5 @@ function Contact() {
     </div>
   );
 }
+
 export default Contact;
