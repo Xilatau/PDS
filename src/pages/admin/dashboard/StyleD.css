@@ -9,5 +9,5 @@
   padding: 20px;
   /* transição e margem quando a navbar está aberta */
   transition: margin-left 0.3s ease;
-  margin-left: 67px;
+  margin-left: 5%;
 }
