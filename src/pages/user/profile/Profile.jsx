@@ -126,7 +126,7 @@ function Perfil() {
         stringIMG
       });
       alert('Perfil atualizado com sucesso!');
-      navigate('/dashboard');
+      navigate('/dashboardAdmin');
     } catch {
       console.error('Erro ao atualizar o perfil.');
     }

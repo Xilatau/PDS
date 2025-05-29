@@ -78,7 +78,9 @@ export default function ListaPedidos() {
     <div className="dashboard">
       <h2>Pedidos de Reunião</h2>
       {pedidos.length == 0 ? (
-        <p>Não há pedidos de reunião.</p>
+        <ul className="Pedidos">
+          <li><center>Não há pedidos de reunião.</center></li>
+        </ul>
       ) : (
         <ul className="Pedidos">
           {pedidos.map((pedido, index) => {
@@ -105,7 +107,9 @@ export default function ListaPedidos() {
       )}
       <h2>Reuniões Agendadas</h2>
       {reunioes.length == 0 ? (
-        <p>Não há reuniões agendadas.</p>
+        <ul className="Pedidos">
+          <li><center>Não há reuniões agendadas.</center></li>
+        </ul>
       ) : (
         <ul className="Pedidos">
           {reunioes.map((reuniao, index) => {

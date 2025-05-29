@@ -8,11 +8,12 @@
 
 .Pedidos li {
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid #ddd;
   border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 15px 20px;
   margin-bottom: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
   width: 65%;
   display: flex;
