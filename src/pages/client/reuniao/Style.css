@@ -38,14 +38,20 @@ h1{
 }
 
 .verpedidos{
-    background-color: black;
+    padding: 12px;
+    border: none;
+    background: rgb(44, 135, 100);
     color: white;
-    border-radius: 10%;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
     cursor: pointer;
-    padding: 1% 2%;
-    margin: 2% auto 0;
-    display: block; 
-    text-align: center;
+    transition: 0.3s ease;
+    width: 60%;
+    align-self: center;
+}
+
+.verpedidos:hover {
+    transform: scale(1.02);
 }
 
 .reuniao-row {
