@@ -12,8 +12,9 @@ h1{
 .form-reuniao{
     margin: 2% auto 2%;
     padding: 3% 4% 5%;
-    border: 4px solid #000;
-    border-radius: 17px;
+    border: 2px solid rgb(44, 135, 100);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px black;
     background-color: white;
 }
 
