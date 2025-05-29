@@ -126,11 +126,11 @@ background-color: #2c3e50;
 }
 
 .vertical-navbar.open {
-    width: 240px;
+    width: 16.5%;
 }
 
 .vertical-navbar.closed {
-    width: 67px;
+    width: 5%;
 }
 
 .vertical-navbar h2 {
