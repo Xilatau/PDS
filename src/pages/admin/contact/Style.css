@@ -29,7 +29,7 @@
 
 .Add-Contact {
   margin: 3.9% auto 0;
-  background-color: white;
+  background-color: rgb(241, 255, 249);
   color: rgb(73, 73, 73);
   font-family: Arial, Helvetica, sans-serif;
   border: 2px solid rgb(44, 135, 100);
@@ -49,6 +49,7 @@
   gap: 15px;
   display: flex;
   cursor: pointer;
+  background-color: rgb(241, 255, 249);
 }
   
 .contact-item {
@@ -99,6 +100,5 @@
 .input-filtro {
   padding: 0.5rem;
   border: px solid #ccc;
-  width: 250%; 
   width: 100%;
 }

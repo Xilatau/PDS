@@ -1,6 +1,6 @@
 
 .lista-contactos {
-  background-color: white;
+  background-color:  rgb(241, 255, 249);
   padding: 1%;
   color: rgb(73, 73, 73);
   font-family: Arial, Helvetica, sans-serif;
@@ -33,4 +33,5 @@
   border-radius: 4px;
   border: 1px solid #ccc;
   width: 250px;
+  background-color: rgb(241, 255, 249);
 }
