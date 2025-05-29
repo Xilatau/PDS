@@ -38,16 +38,20 @@ h1{
 }
 
 .verpedidos{
-    padding: 12px;
-    border: none;
-    background: rgb(44, 135, 100);
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+    border: 2px dotted  #000;
+    background: darkgrey;
     color: white;
     border-radius: var(--border-radius);
     font-size: 1.1rem;
     cursor: pointer;
     transition: 0.3s ease;
-    width: 60%;
+    width: 50%;
     align-self: center;
+    margin: 5% auto 3%;
+    box-shadow: 0 4px 15px grey;
 }
 
 .verpedidos:hover {
